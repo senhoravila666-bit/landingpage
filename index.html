@@ -33,911 +33,187 @@
       --shadow-md:    0 4px 16px rgba(0,0,0,.10);
       --shadow-lg:    0 12px 40px rgba(0,0,0,.14);
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      color: var(--gray-900);
-      background: var(--white);
-      overflow-x: hidden;
-    }
-
+    body { font-family: 'DM Sans', sans-serif; color: var(--gray-900); background: var(--white); overflow-x: hidden; }
     h1, h2, h3, h4 { font-family: 'Sora', sans-serif; }
-
     a { text-decoration: none; color: inherit; }
-
-    /* ── Animations ─────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-10px); }
-    }
-    @keyframes pulse-ring {
-      0%   { transform: scale(1);   opacity: .6; }
-      100% { transform: scale(1.5); opacity: 0;  }
-    }
-    @keyframes shimmer {
-      0%   { background-position: -400px 0; }
-      100% { background-position:  400px 0; }
-    }
-    @keyframes countUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes pulse-ring { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.5); opacity: 0; } }
+    @keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+    @keyframes countUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .anim-fade-up  { animation: fadeUp .7s ease both; }
     .delay-1 { animation-delay: .10s; }
     .delay-2 { animation-delay: .22s; }
     .delay-3 { animation-delay: .34s; }
     .delay-4 { animation-delay: .46s; }
     .delay-5 { animation-delay: .58s; }
-
-    /* ── Layout helpers ─────────────────────────────── */
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
     .section { padding: 96px 0; }
     .section-sm { padding: 64px 0; }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'Sora', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 100px;
-    }
+    .tag { display: inline-flex; align-items: center; gap: 6px; font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; }
     .tag-indigo { background: var(--indigo-faint); color: var(--indigo); }
     .tag-red    { background: var(--red-faint);    color: var(--red); }
     .tag-green  { background: var(--green-faint);  color: var(--green); }
-
-    .section-title {
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 800;
-      line-height: 1.2;
-      color: var(--gray-900);
-      margin: 16px 0 12px;
-    }
-    .section-sub {
-      font-size: 17px;
-      color: var(--gray-500);
-      line-height: 1.7;
-      max-width: 600px;
-    }
-
-    /* ── Buttons ─────────────────────────────────────── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Sora', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 14px 28px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      transition: all .2s ease;
-      letter-spacing: .2px;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--indigo), var(--indigo-light));
-      color: var(--white);
-      box-shadow: 0 4px 14px rgba(79,70,229,.35);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(79,70,229,.45);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--indigo);
-      border: 2px solid var(--indigo-mid);
-    }
-    .btn-outline:hover {
-      background: var(--indigo-faint);
-      border-color: var(--indigo);
-    }
-    .btn-white {
-      background: var(--white);
-      color: var(--indigo);
-      box-shadow: 0 4px 14px rgba(0,0,0,.12);
-    }
-    .btn-white:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(0,0,0,.18);
-    }
-
-    /* ══════════════════════════════════════════════════
-       NAVBAR
-    ══════════════════════════════════════════════════ */
-    .navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(255,255,255,.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--gray-200);
-      transition: box-shadow .2s;
-    }
+    .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1.2; color: var(--gray-900); margin: 16px 0 12px; }
+    .section-sub { font-size: 17px; color: var(--gray-500); line-height: 1.7; max-width: 600px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 14px; padding: 14px 28px; border-radius: 10px; border: none; cursor: pointer; transition: all .2s ease; letter-spacing: .2px; }
+    .btn-primary { background: linear-gradient(135deg, var(--indigo), var(--indigo-light)); color: var(--white); box-shadow: 0 4px 14px rgba(79,70,229,.35); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(79,70,229,.45); }
+    .btn-outline { background: transparent; color: var(--indigo); border: 2px solid var(--indigo-mid); }
+    .btn-outline:hover { background: var(--indigo-faint); border-color: var(--indigo); }
+    .btn-white { background: var(--white); color: var(--indigo); box-shadow: 0 4px 14px rgba(0,0,0,.12); }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.18); }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--gray-200); transition: box-shadow .2s; }
     .navbar.scrolled { box-shadow: var(--shadow-md); }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    /* ── LOGO PLACEHOLDER ── */
-    .logo-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--indigo), var(--indigo-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-family: 'Sora', sans-serif;
-      font-weight: 800;
-      font-size: 16px;
-      /* Substitua por: <img src="logo.png" width="38" height="38" alt="Destecse"> */
-    }
-    .logo-text {
-      font-family: 'Sora', sans-serif;
-      font-weight: 800;
-      font-size: 17px;
-      color: var(--gray-900);
-    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .logo-mark { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, var(--indigo), var(--indigo-light)); display: flex; align-items: center; justify-content: center; color: white; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 16px; }
+    .logo-text { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 17px; color: var(--gray-900); }
     .logo-text span { color: var(--indigo); }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--gray-500);
-      transition: color .15s;
-    }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-500); transition: color .15s; }
     .nav-links a:hover { color: var(--indigo); }
     .nav-cta { display: flex; gap: 10px; }
-
-    @media (max-width: 768px) {
-      .nav-links, .nav-cta .btn-outline { display: none; }
-    }
-
-    /* ══════════════════════════════════════════════════
-       HERO
-    ══════════════════════════════════════════════════ */
-    .hero {
-      padding-top: 140px;
-      padding-bottom: 100px;
-      background: var(--white);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 60% -10%, rgba(99,102,241,.10) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 90% 80%,  rgba(79,70,229,.07)  0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
+    @media (max-width: 768px) { .nav-links, .nav-cta .btn-outline { display: none; } }
+    .hero { padding-top: 140px; padding-bottom: 100px; background: var(--white); position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 60% -10%, rgba(99,102,241,.10) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 90% 80%, rgba(79,70,229,.07) 0%, transparent 70%); pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
     .hero-eyebrow { margin-bottom: 20px; }
-    .hero-title {
-      font-size: clamp(34px, 5vw, 54px);
-      font-weight: 800;
-      line-height: 1.12;
-      letter-spacing: -.5px;
-      color: var(--gray-900);
-      margin-bottom: 20px;
-    }
-    .hero-title .accent {
-      background: linear-gradient(135deg, var(--indigo), var(--indigo-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-sub {
-      font-size: 17px;
-      color: var(--gray-500);
-      line-height: 1.75;
-      margin-bottom: 36px;
-      max-width: 480px;
-    }
+    .hero-title { font-size: clamp(34px, 5vw, 54px); font-weight: 800; line-height: 1.12; letter-spacing: -.5px; color: var(--gray-900); margin-bottom: 20px; }
+    .hero-title .accent { background: linear-gradient(135deg, var(--indigo), var(--indigo-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 17px; color: var(--gray-500); line-height: 1.75; margin-bottom: 36px; max-width: 480px; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .hero-trust {
-      margin-top: 48px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 13px;
-      color: var(--gray-400);
-    }
-    .hero-trust-dots {
-      display: flex;
-      gap: -4px;
-    }
-    .trust-dot {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: 2px solid white;
-      background: linear-gradient(135deg, var(--indigo), var(--indigo-light));
-      margin-left: -6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: white;
-      font-weight: 700;
-    }
-
-    /* Dashboard preview card */
-    .hero-visual {
-      position: relative;
-    }
-    .dashboard-card {
-      background: var(--white);
-      border-radius: 20px;
-      box-shadow: 0 24px 64px rgba(0,0,0,.14), 0 0 0 1px rgba(0,0,0,.06);
-      overflow: hidden;
-      animation: float 5s ease-in-out infinite;
-    }
-    .dash-topbar {
-      background: linear-gradient(135deg, var(--indigo-dark), var(--indigo));
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .dash-topbar-title {
-      font-family: 'Sora', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      color: white;
-    }
+    .hero-trust { margin-top: 48px; display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--gray-400); }
+    .hero-trust-dots { display: flex; gap: -4px; }
+    .trust-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid white; background: linear-gradient(135deg, var(--indigo), var(--indigo-light)); margin-left: -6px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: white; font-weight: 700; }
+    .hero-visual { position: relative; }
+    .dashboard-card { background: var(--white); border-radius: 20px; box-shadow: 0 24px 64px rgba(0,0,0,.14), 0 0 0 1px rgba(0,0,0,.06); overflow: hidden; animation: float 5s ease-in-out infinite; }
+    .dash-topbar { background: linear-gradient(135deg, var(--indigo-dark), var(--indigo)); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .dash-topbar-title { font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 700; color: white; }
     .dash-topbar-dots { display: flex; gap: 5px; }
-    .dash-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.3);
-    }
+    .dash-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.3); }
     .dash-body { padding: 20px; }
-    .dash-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .dash-stat {
-      background: var(--gray-50);
-      border-radius: 10px;
-      padding: 12px;
-      border: 1px solid var(--gray-200);
-    }
+    .dash-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+    .dash-stat { background: var(--gray-50); border-radius: 10px; padding: 12px; border: 1px solid var(--gray-200); }
     .dash-stat-label { font-size: 10px; color: var(--gray-400); margin-bottom: 4px; font-weight: 500; }
-    .dash-stat-value {
-      font-family: 'Sora', sans-serif;
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--gray-900);
-    }
+    .dash-stat-value { font-family: 'Sora', sans-serif; font-size: 20px; font-weight: 800; color: var(--gray-900); }
     .dash-stat-value.green { color: var(--green); }
     .dash-stat-value.red   { color: var(--red); }
-    .dash-stat-badge {
-      font-size: 9px;
-      padding: 2px 6px;
-      border-radius: 100px;
-      font-weight: 600;
-      margin-top: 4px;
-      display: inline-block;
-    }
-    .dash-progress-label {
-      font-size: 11px;
-      color: var(--gray-500);
-      margin-bottom: 6px;
-      font-weight: 500;
-    }
-    .dash-progress-bar {
-      background: var(--gray-200);
-      border-radius: 100px;
-      height: 6px;
-      margin-bottom: 10px;
-      overflow: hidden;
-    }
-    .dash-progress-fill {
-      height: 100%;
-      border-radius: 100px;
-      background: linear-gradient(90deg, var(--indigo), var(--indigo-light));
-    }
-    .dash-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--gray-100);
-      font-size: 11px;
-    }
+    .dash-stat-badge { font-size: 9px; padding: 2px 6px; border-radius: 100px; font-weight: 600; margin-top: 4px; display: inline-block; }
+    .dash-progress-label { font-size: 11px; color: var(--gray-500); margin-bottom: 6px; font-weight: 500; }
+    .dash-progress-bar { background: var(--gray-200); border-radius: 100px; height: 6px; margin-bottom: 10px; overflow: hidden; }
+    .dash-progress-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--indigo), var(--indigo-light)); }
+    .dash-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--gray-100); font-size: 11px; }
     .dash-row:last-child { border-bottom: none; }
     .dash-row-label { color: var(--gray-500); }
-    .dash-row-badge {
-      padding: 2px 8px;
-      border-radius: 100px;
-      font-size: 10px;
-      font-weight: 600;
-    }
-
-    /* Floating badges */
-    .hero-badge {
-      position: absolute;
-      background: white;
-      border-radius: 12px;
-      padding: 10px 14px;
-      box-shadow: var(--shadow-lg);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--gray-700);
-      white-space: nowrap;
-    }
-    .badge-icon {
-      width: 28px; height: 28px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-    }
+    .dash-row-badge { padding: 2px 8px; border-radius: 100px; font-size: 10px; font-weight: 600; }
+    .hero-badge { position: absolute; background: white; border-radius: 12px; padding: 10px 14px; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--gray-700); white-space: nowrap; }
+    .badge-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
     .badge-top-left  { top: -16px; left: -20px; }
     .badge-bot-right { bottom: 20px; right: -20px; }
-
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
-    }
-
-    /* ══════════════════════════════════════════════════
-       PAIN — MULTAS LGPD
-    ══════════════════════════════════════════════════ */
+    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .hero-visual { display: none; } }
     .pain { background: var(--gray-900); position: relative; overflow: hidden; }
-    .pain-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 20% 50%, rgba(239,68,68,.12) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 60% at 80% 20%, rgba(79,70,229,.15) 0%, transparent 60%);
-      pointer-events: none;
-    }
+    .pain-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 20% 50%, rgba(239,68,68,.12) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 80% 20%, rgba(79,70,229,.15) 0%, transparent 60%); pointer-events: none; }
     .pain-header { text-align: center; margin-bottom: 64px; }
     .pain-header .section-title { color: var(--white); }
     .pain-header .section-sub { color: rgba(255,255,255,.55); margin: 0 auto; }
-
-    .fine-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-bottom: 48px;
-    }
-    .fine-card {
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      padding: 28px;
-      position: relative;
-      overflow: hidden;
-      transition: transform .2s, border-color .2s;
-    }
-    .fine-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(239,68,68,.4);
-    }
-    .fine-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--red), #f97316);
-    }
-    .fine-card-icon {
-      font-size: 28px;
-      margin-bottom: 14px;
-    }
-    .fine-card-value {
-      font-family: 'Sora', sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--red);
-      margin-bottom: 6px;
-      line-height: 1;
-    }
-    .fine-card-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-    .fine-card-desc {
-      font-size: 13px;
-      color: rgba(255,255,255,.5);
-      line-height: 1.6;
-    }
-    .fine-source {
-      text-align: center;
-      font-size: 12px;
-      color: rgba(255,255,255,.3);
-      margin-top: 16px;
-    }
+    .fine-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 48px; }
+    .fine-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.10); border-radius: var(--radius); padding: 28px; position: relative; overflow: hidden; transition: transform .2s, border-color .2s; }
+    .fine-card:hover { transform: translateY(-4px); border-color: rgba(239,68,68,.4); }
+    .fine-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--red), #f97316); }
+    .fine-card-icon { font-size: 28px; margin-bottom: 14px; }
+    .fine-card-value { font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 800; color: var(--red); margin-bottom: 6px; line-height: 1; }
+    .fine-card-label { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .fine-card-desc { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.6; }
+    .fine-source { text-align: center; font-size: 12px; color: rgba(255,255,255,.3); margin-top: 16px; }
     .fine-source strong { color: rgba(255,255,255,.5); }
-
-    .pain-alert {
-      background: rgba(239,68,68,.10);
-      border: 1px solid rgba(239,68,68,.25);
-      border-radius: var(--radius);
-      padding: 24px 32px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+    .pain-alert { background: rgba(239,68,68,.10); border: 1px solid rgba(239,68,68,.25); border-radius: var(--radius); padding: 24px 32px; display: flex; align-items: center; gap: 20px; }
     .pain-alert-icon { font-size: 36px; flex-shrink: 0; }
     .pain-alert-text { font-size: 15px; color: rgba(255,255,255,.75); line-height: 1.65; }
     .pain-alert-text strong { color: var(--white); }
-
-    /* ══════════════════════════════════════════════════
-       FEATURES
-    ══════════════════════════════════════════════════ */
     .features { background: var(--white); }
     .features-header { margin-bottom: 64px; }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-    .feature-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: 16px;
-      padding: 32px;
-      transition: all .25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .feature-card:hover {
-      border-color: var(--indigo-mid);
-      box-shadow: 0 8px 32px rgba(79,70,229,.10);
-      transform: translateY(-3px);
-    }
-    .feature-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--indigo), var(--indigo-light));
-      opacity: 0;
-      transition: opacity .25s;
-    }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .feature-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 16px; padding: 32px; transition: all .25s ease; position: relative; overflow: hidden; }
+    .feature-card:hover { border-color: var(--indigo-mid); box-shadow: 0 8px 32px rgba(79,70,229,.10); transform: translateY(-3px); }
+    .feature-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--indigo), var(--indigo-light)); opacity: 0; transition: opacity .25s; }
     .feature-card:hover::after { opacity: 1; }
-    .feature-icon {
-      width: 52px; height: 52px;
-      border-radius: 14px;
-      background: var(--indigo-faint);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      margin-bottom: 20px;
-    }
-    .feature-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--gray-900);
-      margin-bottom: 10px;
-    }
-    .feature-desc {
-      font-size: 14px;
-      color: var(--gray-500);
-      line-height: 1.7;
-    }
-    .feature-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 100px;
-      margin-top: 16px;
-    }
-
-    /* ══════════════════════════════════════════════════
-       GAINS
-    ══════════════════════════════════════════════════ */
+    .feature-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--indigo-faint); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; }
+    .feature-title { font-size: 17px; font-weight: 700; color: var(--gray-900); margin-bottom: 10px; }
+    .feature-desc { font-size: 14px; color: var(--gray-500); line-height: 1.7; }
+    .feature-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-top: 16px; }
     .gains { background: var(--indigo-faint); }
-    .gains-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
+    .gains-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .gain-list { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
-    .gain-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .gain-check {
-      width: 36px; height: 36px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--indigo), var(--indigo-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(79,70,229,.25);
-    }
-    .gain-text-title {
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--gray-900);
-      margin-bottom: 4px;
-    }
-    .gain-text-desc {
-      font-size: 13px;
-      color: var(--gray-500);
-      line-height: 1.6;
-    }
-
-    /* Metrics panel */
-    .metrics-panel {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: var(--shadow-lg);
-    }
-    .metrics-title {
-      font-family: 'Sora', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--gray-900);
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .metric-row {
-      margin-bottom: 20px;
-    }
-    .metric-row-top {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
+    .gain-item { display: flex; gap: 16px; align-items: flex-start; }
+    .gain-check { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--indigo), var(--indigo-light)); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(79,70,229,.25); }
+    .gain-text-title { font-weight: 700; font-size: 15px; color: var(--gray-900); margin-bottom: 4px; }
+    .gain-text-desc { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+    .metrics-panel { background: var(--white); border-radius: 20px; padding: 32px; box-shadow: var(--shadow-lg); }
+    .metrics-title { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+    .metric-row { margin-bottom: 20px; }
+    .metric-row-top { display: flex; justify-content: space-between; margin-bottom: 8px; }
     .metric-row-label { font-size: 13px; color: var(--gray-500); font-weight: 500; }
-    .metric-row-val {
-      font-family: 'Sora', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--indigo);
-    }
-    .metric-bar {
-      background: var(--gray-100);
-      border-radius: 100px;
-      height: 8px;
-      overflow: hidden;
-    }
-    .metric-fill {
-      height: 100%;
-      border-radius: 100px;
-      background: linear-gradient(90deg, var(--indigo), var(--indigo-light));
-    }
-    .metric-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--gray-100);
-    }
-    .metric-stat-val {
-      font-family: 'Sora', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--gray-900);
-    }
+    .metric-row-val { font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 700; color: var(--indigo); }
+    .metric-bar { background: var(--gray-100); border-radius: 100px; height: 8px; overflow: hidden; }
+    .metric-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--indigo), var(--indigo-light)); }
+    .metric-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--gray-100); }
+    .metric-stat-val { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 800; color: var(--gray-900); }
     .metric-stat-val.green { color: var(--green); }
     .metric-stat-label { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
-
-    @media (max-width: 860px) {
-      .gains-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ══════════════════════════════════════════════════
-       JURIDICO
-    ══════════════════════════════════════════════════ */
+    @media (max-width: 860px) { .gains-grid { grid-template-columns: 1fr; } }
     .juridico { background: var(--white); }
     .juridico-header { text-align: center; margin-bottom: 64px; }
     .juridico-header .section-sub { margin: 0 auto; }
-
-    .articles-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-    .article-card {
-      border: 1px solid var(--gray-200);
-      border-radius: 16px;
-      padding: 28px;
-      position: relative;
-      overflow: hidden;
-      transition: all .2s;
-    }
-    .article-card:hover {
-      border-color: var(--indigo-mid);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-    }
-    .article-num {
-      font-family: 'Sora', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--indigo);
-      background: var(--indigo-faint);
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 100px;
-      margin-bottom: 14px;
-    }
-    .article-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--gray-900);
-      margin-bottom: 8px;
-    }
-    .article-desc {
-      font-size: 13px;
-      color: var(--gray-500);
-      line-height: 1.65;
-    }
-    .article-check {
-      position: absolute;
-      top: 20px; right: 20px;
-      width: 24px; height: 24px;
-      border-radius: 50%;
-      background: var(--green-faint);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-    }
-
-    /* ══════════════════════════════════════════════════
-       HOW IT WORKS
-    ══════════════════════════════════════════════════ */
+    .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .article-card { border: 1px solid var(--gray-200); border-radius: 16px; padding: 28px; position: relative; overflow: hidden; transition: all .2s; }
+    .article-card:hover { border-color: var(--indigo-mid); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .article-num { font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--indigo); background: var(--indigo-faint); display: inline-block; padding: 4px 10px; border-radius: 100px; margin-bottom: 14px; }
+    .article-title { font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
+    .article-desc { font-size: 13px; color: var(--gray-500); line-height: 1.65; }
+    .article-check { position: absolute; top: 20px; right: 20px; width: 24px; height: 24px; border-radius: 50%; background: var(--green-faint); display: flex; align-items: center; justify-content: center; font-size: 12px; }
     .how { background: var(--gray-50); }
     .how-header { text-align: center; margin-bottom: 64px; }
     .how-header .section-sub { margin: 0 auto; }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0;
-      position: relative;
-    }
-    .steps::before {
-      content: '';
-      position: absolute;
-      top: 28px;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--indigo-mid), var(--indigo));
-      z-index: 0;
-    }
-    .step {
-      text-align: center;
-      padding: 0 20px;
-      position: relative;
-      z-index: 1;
-    }
-    .step-num {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--indigo), var(--indigo-light));
-      color: white;
-      font-family: 'Sora', sans-serif;
-      font-size: 18px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      box-shadow: 0 4px 16px rgba(79,70,229,.35);
-    }
-    .step-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--gray-900);
-      margin-bottom: 8px;
-    }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; position: relative; }
+    .steps::before { content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, var(--indigo-mid), var(--indigo)); z-index: 0; }
+    .step { text-align: center; padding: 0 20px; position: relative; z-index: 1; }
+    .step-num { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--indigo), var(--indigo-light)); color: white; font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 16px rgba(79,70,229,.35); }
+    .step-title { font-size: 15px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
     .step-desc { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
-
-    @media (max-width: 700px) {
-      .steps::before { display: none; }
-      .steps { gap: 40px; }
-    }
-
-    /* ══════════════════════════════════════════════════
-       CTA
-    ══════════════════════════════════════════════════ */
-    .cta-section {
-      background: linear-gradient(135deg, var(--indigo-dark) 0%, var(--indigo) 50%, var(--indigo-light) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 50% 80% at 80% 50%, rgba(255,255,255,.06) 0%, transparent 60%),
-        radial-gradient(ellipse 30% 40% at 10% 20%, rgba(255,255,255,.04) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .cta-inner {
-      text-align: center;
-      position: relative;
-    }
-    .cta-title {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 800;
-      color: var(--white);
-      margin: 16px 0 16px;
-      line-height: 1.15;
-    }
-    .cta-sub {
-      font-size: 16px;
-      color: rgba(255,255,255,.65);
-      margin-bottom: 40px;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    @media (max-width: 700px) { .steps::before { display: none; } .steps { gap: 40px; } }
+    .cta-section { background: linear-gradient(135deg, var(--indigo-dark) 0%, var(--indigo) 50%, var(--indigo-light) 100%); position: relative; overflow: hidden; }
+    .cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 50% 80% at 80% 50%, rgba(255,255,255,.06) 0%, transparent 60%), radial-gradient(ellipse 30% 40% at 10% 20%, rgba(255,255,255,.04) 0%, transparent 60%); pointer-events: none; }
+    .cta-inner { text-align: center; position: relative; }
+    .cta-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: var(--white); margin: 16px 0 16px; line-height: 1.15; }
+    .cta-sub { font-size: 16px; color: rgba(255,255,255,.65); margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; }
     .cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
-    .cta-email-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Sora', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      color: rgba(255,255,255,.7);
-      margin-top: 24px;
-      transition: color .15s;
-    }
+    .cta-email-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 600; color: rgba(255,255,255,.7); margin-top: 24px; transition: color .15s; }
     .cta-email-link:hover { color: white; }
-
-    /* ══════════════════════════════════════════════════
-       FOOTER
-    ══════════════════════════════════════════════════ */
-    .footer {
-      background: var(--gray-900);
-      padding: 60px 0 32px;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 48px;
-    }
-    .footer-brand-desc {
-      font-size: 13px;
-      color: rgba(255,255,255,.45);
-      line-height: 1.75;
-      margin-top: 14px;
-      max-width: 260px;
-    }
-    /* ── FOOTER CONTACT PLACEHOLDERS ── */
-    .footer-contact {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .footer-contact-item {
-      font-size: 12px;
-      color: rgba(255,255,255,.35);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    /* Substitua os textos abaixo pelos dados reais:
-       Endereço: "Rua Exemplo, 123 - Cidade/UF"
-       Telefone: "(11) 99999-9999"
-       Email: "contato@destecse.com.br"
-    */
-
-    .footer-col-title {
-      font-family: 'Sora', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 16px;
-      letter-spacing: .3px;
-    }
+    .footer { background: var(--gray-900); padding: 60px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand-desc { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.75; margin-top: 14px; max-width: 260px; }
+    .footer-contact { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .footer-contact-item { font-size: 12px; color: rgba(255,255,255,.35); display: flex; align-items: center; gap: 6px; }
+    .footer-col-title { font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 16px; letter-spacing: .3px; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a {
-      font-size: 13px;
-      color: rgba(255,255,255,.45);
-      transition: color .15s;
-    }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.45); transition: color .15s; }
     .footer-links a:hover { color: var(--indigo-mid); }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     .footer-copy { font-size: 12px; color: rgba(255,255,255,.3); }
-    .footer-lgpd-badge {
-      font-size: 11px;
-      color: rgba(255,255,255,.4);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    @media (max-width: 860px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 540px) {
-      .footer-grid { grid-template-columns: 1fr; }
-    }
+    .footer-lgpd-badge { font-size: 11px; color: rgba(255,255,255,.4); display: flex; align-items: center; gap: 6px; }
+    @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px) { .footer-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
-<!-- ══ NAVBAR ══════════════════════════════════════════════════════════════ -->
 <nav class="navbar" id="navbar">
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <!-- LOGO: substitua o div abaixo por <img src="logo.png" alt="Destecse" height="38"> -->
         <div class="logo-mark">D</div>
         <span class="logo-text">Destecse <span>LGPD</span></span>
       </a>
@@ -948,32 +224,29 @@
         <li><a href="#como-funciona">Como Funciona</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="#contato" class="btn btn-outline">Falar com comercial</a>
+        <a href="#contato" class="btn btn-outline">Quero descobrir se minha clínica está em risco</a>
         <a href="#contato" class="btn btn-primary">Conhecer a plataforma →</a>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- ══ HERO ════════════════════════════════════════════════════════════════ -->
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
   <div class="container">
     <div class="hero-grid">
-
       <div>
         <div class="hero-eyebrow anim-fade-up">
           <span class="tag tag-indigo">🛡️ Conformidade LGPD</span>
         </div>
         <h1 class="hero-title anim-fade-up delay-1">
-          Proteja sua empresa.<br/>
-          Garanta os direitos<br/>
-          dos <span class="accent">seus pacientes.</span>
+          Sua clínica pode estar<br/>
+          violando a LGPD sem saber —<br/>
+          e isso pode custar até <span class="accent">R$ 50 milhões.</span>
         </h1>
         <p class="hero-sub anim-fade-up delay-2">
-          Plataforma completa de gestão de conformidade LGPD para clínicas e consultórios.
-          Mapeie processos, gerencie consentimentos e evite multas de até
-          <strong>R$ 50 milhões</strong>.
+          A maioria das clínicas não está preparada para lidar com dados sensíveis de pacientes.
+          Evite multas, processos e perda de confiança com uma solução simples e guiada.
         </p>
         <div class="hero-actions anim-fade-up delay-3">
           <a href="#contato" class="btn btn-primary">Quero conhecer a plataforma →</a>
@@ -988,7 +261,6 @@
           <span>Processos mapeados · Termos digitais · Auditoria completa</span>
         </div>
       </div>
-
       <div class="hero-visual anim-fade-up delay-2">
         <div class="hero-badge badge-top-left">
           <div class="badge-icon" style="background:#ecfdf5;">✅</div>
@@ -1001,28 +273,14 @@
           <div class="dash-topbar">
             <span class="dash-topbar-title">Dashboard LGPD</span>
             <div class="dash-topbar-dots">
-              <div class="dash-dot"></div>
-              <div class="dash-dot"></div>
-              <div class="dash-dot"></div>
+              <div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div>
             </div>
           </div>
           <div class="dash-body">
             <div class="dash-stats">
-              <div class="dash-stat">
-                <div class="dash-stat-label">Conformidade</div>
-                <div class="dash-stat-value green">94%</div>
-                <div class="dash-stat-badge" style="background:#ecfdf5;color:#059669;">↑ Alto</div>
-              </div>
-              <div class="dash-stat">
-                <div class="dash-stat-label">Processos</div>
-                <div class="dash-stat-value">12</div>
-                <div class="dash-stat-badge" style="background:#eef2ff;color:#4f46e5;">Mapeados</div>
-              </div>
-              <div class="dash-stat">
-                <div class="dash-stat-label">Pendências</div>
-                <div class="dash-stat-value red">2</div>
-                <div class="dash-stat-badge" style="background:#fef2f2;color:#ef4444;">Atenção</div>
-              </div>
+              <div class="dash-stat"><div class="dash-stat-label">Conformidade</div><div class="dash-stat-value green">94%</div><div class="dash-stat-badge" style="background:#ecfdf5;color:#059669;">↑ Alto</div></div>
+              <div class="dash-stat"><div class="dash-stat-label">Processos</div><div class="dash-stat-value">12</div><div class="dash-stat-badge" style="background:#eef2ff;color:#4f46e5;">Mapeados</div></div>
+              <div class="dash-stat"><div class="dash-stat-label">Pendências</div><div class="dash-stat-value red">2</div><div class="dash-stat-badge" style="background:#fef2f2;color:#ef4444;">Atenção</div></div>
             </div>
             <div class="dash-progress-label">Mapeamento de processos</div>
             <div class="dash-progress-bar"><div class="dash-progress-fill" style="width:78%"></div></div>
@@ -1031,18 +289,9 @@
             <div class="dash-progress-label">Treinamento de equipe</div>
             <div class="dash-progress-bar"><div class="dash-progress-fill" style="width:60%"></div></div>
             <div style="margin-top:14px;">
-              <div class="dash-row">
-                <span class="dash-row-label">Solicitação Art. 18</span>
-                <span class="dash-row-badge" style="background:#ecfdf5;color:#059669;">Respondida</span>
-              </div>
-              <div class="dash-row">
-                <span class="dash-row-label">Avaliação de risco</span>
-                <span class="dash-row-badge" style="background:#fffbeb;color:#d97706;">Em análise</span>
-              </div>
-              <div class="dash-row">
-                <span class="dash-row-label">Última auditoria</span>
-                <span class="dash-row-badge" style="background:#eef2ff;color:#4f46e5;">12/03/2026</span>
-              </div>
+              <div class="dash-row"><span class="dash-row-label">Solicitação Art. 18</span><span class="dash-row-badge" style="background:#ecfdf5;color:#059669;">Respondida</span></div>
+              <div class="dash-row"><span class="dash-row-label">Avaliação de risco</span><span class="dash-row-badge" style="background:#fffbeb;color:#d97706;">Em análise</span></div>
+              <div class="dash-row"><span class="dash-row-label">Última auditoria</span><span class="dash-row-badge" style="background:#eef2ff;color:#4f46e5;">12/03/2026</span></div>
             </div>
           </div>
         </div>
@@ -1054,226 +303,76 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══ PAIN — MULTAS ═══════════════════════════════════════════════════════ -->
 <section class="pain section" id="multas">
   <div class="pain-bg"></div>
   <div class="container">
     <div class="pain-header">
       <span class="tag tag-red">⚠️ O Risco Real</span>
-      <h2 class="section-title">Sua empresa está exposta.<br/>As multas são reais.</h2>
-      <p class="section-sub">
-        A ANPD já está autuando. Ignorar a LGPD não é mais uma opção —
-        as penalidades previstas na Lei 13.709/2018 podem comprometer
-        financeiramente qualquer negócio.
-      </p>
+      <h2 class="section-title">Sua clínica pode estar em risco — mesmo você acreditando que está tudo certo.<br/>Na prática, esse risco começa nos pequenos erros do dia a dia.</h2>
+      <p class="section-sub">Um erro no uso de dados de pacientes pode gerar multas, bloqueios e até exposição pública. E isso já está acontecendo na prática. As penalidades da LGPD já estão sendo aplicadas.</p>
     </div>
     <div class="fine-cards">
-      <div class="fine-card">
-        <div class="fine-card-icon">💸</div>
-        <div class="fine-card-value">2%</div>
-        <div class="fine-card-label">do faturamento anual</div>
-        <div class="fine-card-desc">Multa simples por infração, calculada sobre o faturamento bruto do último exercício — limitada a R$ 50 milhões por infração.</div>
-      </div>
-      <div class="fine-card">
-        <div class="fine-card-icon">🚫</div>
-        <div class="fine-card-value">R$ 50M</div>
-        <div class="fine-card-label">por infração cometida</div>
-        <div class="fine-card-desc">Teto máximo por cada infração individual. Múltiplas infrações simultâneas multiplicam o valor total de penalidade.</div>
-      </div>
-      <div class="fine-card">
-        <div class="fine-card-icon">📵</div>
-        <div class="fine-card-value">Bloqueio</div>
-        <div class="fine-card-label">dos dados pessoais</div>
-        <div class="fine-card-desc">Suspensão parcial ou total do banco de dados, comprometendo diretamente a operação clínica e o atendimento ao paciente.</div>
-      </div>
-      <div class="fine-card">
-        <div class="fine-card-icon">📣</div>
-        <div class="fine-card-value">Pública</div>
-        <div class="fine-card-label">divulgação da infração</div>
-        <div class="fine-card-desc">Publicização da infração após apuração — dano irreparável à reputação da clínica perante pacientes e parceiros.</div>
-      </div>
+      <div class="fine-card"><div class="fine-card-icon">💸</div><div class="fine-card-value">2%</div><div class="fine-card-label">do faturamento anual</div><div class="fine-card-desc">Multa simples por infração, calculada sobre o faturamento bruto do último exercício — limitada a R$ 50 milhões por infração.</div></div>
+      <div class="fine-card"><div class="fine-card-icon">🚫</div><div class="fine-card-value">R$ 50M</div><div class="fine-card-label">por infração cometida</div><div class="fine-card-desc">Teto máximo por cada infração individual. Múltiplas infrações simultâneas multiplicam o valor total de penalidade.</div></div>
+      <div class="fine-card"><div class="fine-card-icon">📵</div><div class="fine-card-value">Bloqueio</div><div class="fine-card-label">dos dados pessoais</div><div class="fine-card-desc">Suspensão parcial ou total do banco de dados, comprometendo diretamente a operação clínica e o atendimento ao paciente.</div></div>
+      <div class="fine-card"><div class="fine-card-icon">📣</div><div class="fine-card-value">Pública</div><div class="fine-card-label">divulgação da infração</div><div class="fine-card-desc">Publicização da infração após apuração — dano irreparável à reputação da clínica perante pacientes e parceiros.</div></div>
     </div>
-    <div class="pain-alert">
-      <div class="pain-alert-icon">⚖️</div>
-      <div class="pain-alert-text">
-        <strong>Art. 52 da LGPD</strong> — As sanções são aplicadas pela ANPD após procedimento administrativo.
-        Clínicas que coletam dados sensíveis de saúde estão sujeitas a <strong>penalidades agravadas</strong>,
-        pois dados de saúde são classificados como dados pessoais sensíveis (Art. 11).
-        <strong>Não ter processos documentados é evidência de negligência.</strong>
-      </div>
-    </div>
-    <p class="fine-source">Fonte: <strong>Lei nº 13.709/2018 — Lei Geral de Proteção de Dados Pessoais (LGPD)</strong> · Art. 52 e seguintes</p>
+    <div class="pain-alert"><div class="pain-alert-icon">⚖️</div><div class="pain-alert-text"><strong>Art. 52 da LGPD</strong> — As sanções são aplicadas pela ANPD após procedimento administrativo. Clínicas que coletam dados sensíveis de saúde estão sujeitas a <strong>penalidades agravadas</strong>, pois dados de saúde são classificados como dados pessoais sensíveis (Art. 11). <strong>Não ter processos documentados é evidência de negligência.</strong></div></div>
+    <p class="fine-source">Fonte: <strong>Lei n.º 13.709/2018 — Lei Geral de Proteção de Dados Pessoais (LGPD)</strong> · Art. 52 e seguintes</p>
   </div>
 </section>
 
-<!-- ══ FEATURES ════════════════════════════════════════════════════════════ -->
 <section class="features section" id="funcionalidades">
   <div class="container">
     <div class="features-header">
       <span class="tag tag-indigo">⚙️ Plataforma</span>
       <h2 class="section-title">Tudo que você precisa<br/>em um só lugar</h2>
-      <p class="section-sub">
-        Ferramentas desenvolvidas especificamente para clínicas e consultórios que precisam
-        de conformidade LGPD sem complicação.
-      </p>
+      <p class="section-sub">Ferramentas desenvolvidas especificamente para clínicas e consultórios que precisam de conformidade LGPD sem complicação.</p>
     </div>
     <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🗺️</div>
-        <div class="feature-title">Mapeamento de Processos</div>
-        <div class="feature-desc">Cadastre e documente todos os processos que envolvem dados pessoais — finalidade, base legal, tipo de dado e prazo de retenção. Cada processo vira um ativo auditável.</div>
-        <span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">Art. 7º e Art. 11º</span>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">✍️</div>
-        <div class="feature-title">Termos Digitais com Assinatura</div>
-        <div class="feature-desc">Envio automático de termos por e-mail com link de assinatura. Registro com IP, timestamp e hash criptográfico — prova jurídica do consentimento.</div>
-        <span class="feature-badge" style="background:#ecfdf5;color:#059669;">Válido juridicamente</span>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📬</div>
-        <div class="feature-title">Canal do Titular (Art. 18)</div>
-        <div class="feature-desc">Portal para receber solicitações de acesso, correção e revogação. Controle de prazo de 15 dias com alertas automáticos e registro de resposta com anexos.</div>
-        <span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">Art. 18 LGPD</span>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <div class="feature-title">Avaliação de Conformidade</div>
-        <div class="feature-desc">Questionário de maturidade LGPD com pontuação automatizada, risco calculado (baixo/médio/alto/crítico) e histórico comparativo entre avaliações.</div>
-        <span class="feature-badge" style="background:#fffbeb;color:#d97706;">Diagnóstico contínuo</span>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">👥</div>
-        <div class="feature-title">Gestão de Colaboradores</div>
-        <div class="feature-desc">Cadastro de equipe com envio de termos específicos por função. Controle de quem assinou o quê, com data, IP e versão do documento.</div>
-        <span class="feature-badge" style="background:#ecfdf5;color:#059669;">Rastreável</span>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🤖</div>
-        <div class="feature-title">Assistente LGPD via Chat</div>
-        <div class="feature-desc">Chat guiado que permite cadastrar colaboradores, abrir solicitações de titular, iniciar avaliações e tirar dúvidas sobre a lei — tudo em linguagem simples.</div>
-        <span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">IA assistida</span>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔍</div>
-        <div class="feature-title">Trilha de Auditoria Completa</div>
-        <div class="feature-desc">Cada ação registrada com IP, usuário, timestamp e hash. Histórico imutável que serve como evidência em caso de fiscalização da ANPD.</div>
-        <span class="feature-badge" style="background:#fef2f2;color:#ef4444;">Art. 52 LGPD</span>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📁</div>
-        <div class="feature-title">Retenção Documental</div>
-        <div class="feature-desc">Gestão do ciclo de vida de documentos com prazo de retenção configurável. Atende CFO-118/2012 (20 anos para prontuários) e LGPD simultaneamente.</div>
-        <span class="feature-badge" style="background:#fffbeb;color:#d97706;">CFO-118/2012</span>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📧</div>
-        <div class="feature-title">Notificações Automáticas</div>
-        <div class="feature-desc">E-mails transacionais com design profissional enviados automaticamente: termos pendentes, respostas a solicitações e alertas de prazo vencendo.</div>
-        <span class="feature-badge" style="background:#ecfdf5;color:#059669;">Automatizado</span>
-      </div>
+      <div class="feature-card"><div class="feature-icon">🗺️</div><div class="feature-title">Mapeamento de Processos</div><div class="feature-desc">Cadastre e documente todos os processos que envolvem dados pessoais — finalidade, base legal, tipo de dado e prazo de retenção. Cada processo vira um ativo auditável.</div><span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">Art. 7º e Art. 11º</span></div>
+      <div class="feature-card"><div class="feature-icon">✍️</div><div class="feature-title">Termos Digitais com Assinatura</div><div class="feature-desc">Envio automático de termos por e-mail com link de assinatura. Registro com IP, timestamp e hash criptográfico — prova jurídica do consentimento.</div><span class="feature-badge" style="background:#ecfdf5;color:#059669;">Válido juridicamente</span></div>
+      <div class="feature-card"><div class="feature-icon">📬</div><div class="feature-title">Canal do Titular (Art. 18)</div><div class="feature-desc">Portal para receber solicitações de acesso, correção e revogação. Controle de prazo de 15 dias com alertas automáticos e registro de resposta com anexos.</div><span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">Art. 18 LGPD</span></div>
+      <div class="feature-card"><div class="feature-icon">📊</div><div class="feature-title">Avaliação de Conformidade</div><div class="feature-desc">Questionário de maturidade LGPD com pontuação automatizada, risco calculado (baixo/médio/alto/crítico) e histórico comparativo entre avaliações.</div><span class="feature-badge" style="background:#fffbeb;color:#d97706;">Diagnóstico contínuo</span></div>
+      <div class="feature-card"><div class="feature-icon">👥</div><div class="feature-title">Gestão de Colaboradores</div><div class="feature-desc">Cadastro de equipe com envio de termos específicos por função. Controle de quem assinou o quê, com data, IP e versão do documento.</div><span class="feature-badge" style="background:#ecfdf5;color:#059669;">Rastreável</span></div>
+      <div class="feature-card"><div class="feature-icon">🤖</div><div class="feature-title">Assistente LGPD via Chat</div><div class="feature-desc">Chat guiado que permite cadastrar colaboradores, abrir solicitações de titular, iniciar avaliações e tirar dúvidas sobre a lei — tudo em linguagem simples.</div><span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">IA assistida</span></div>
+      <div class="feature-card"><div class="feature-icon">🔍</div><div class="feature-title">Trilha de Auditoria Completa</div><div class="feature-desc">Cada ação registrada com IP, usuário, timestamp e hash. Histórico imutável que serve como evidência em caso de fiscalização da ANPD.</div><span class="feature-badge" style="background:#fef2f2;color:#ef4444;">Art. 52 LGPD</span></div>
+      <div class="feature-card"><div class="feature-icon">📁</div><div class="feature-title">Retenção Documental</div><div class="feature-desc">Gestão do ciclo de vida de documentos com prazo de retenção configurável. Atende CFO-118/2012 (20 anos para prontuários) e LGPD simultaneamente.</div><span class="feature-badge" style="background:#fffbeb;color:#d97706;">CFO-118/2012</span></div>
+      <div class="feature-card"><div class="feature-icon">📧</div><div class="feature-title">Notificações Automáticas</div><div class="feature-desc">E-mails transacionais com design profissional enviados automaticamente: termos pendentes, respostas a solicitações e alertas de prazo vencendo.</div><span class="feature-badge" style="background:#ecfdf5;color:#059669;">Automatizado</span></div>
     </div>
   </div>
 </section>
 
-<!-- ══ GAINS ═══════════════════════════════════════════════════════════════ -->
 <section class="gains section" id="ganhos">
   <div class="container">
     <div class="gains-grid">
       <div>
         <span class="tag tag-green">📈 Ganhos Reais</span>
         <h2 class="section-title">Muito além de evitar multas</h2>
-        <p class="section-sub">
-          Empresas com processos LGPD mapeados ganham credibilidade, eficiência e
-          uma vantagem competitiva real no mercado.
-        </p>
+        <p class="section-sub">Empresas com processos LGPD mapeados ganham credibilidade, eficiência e uma vantagem competitiva real no mercado.</p>
         <div class="gain-list">
-          <div class="gain-item">
-            <div class="gain-check">🏆</div>
-            <div>
-              <div class="gain-text-title">Diferencial competitivo</div>
-              <div class="gain-text-desc">Pacientes escolhem clínicas que provam cuidar de seus dados. Certificação LGPD vira argumento de venda.</div>
-            </div>
-          </div>
-          <div class="gain-item">
-            <div class="gain-check">⚡</div>
-            <div>
-              <div class="gain-text-title">Processos ágeis e auditáveis</div>
-              <div class="gain-text-desc">Consentimentos, contratos e termos digitais assinados em minutos. Fim do papel e das gavetas cheias de documentos.</div>
-            </div>
-          </div>
-          <div class="gain-item">
-            <div class="gain-check">🛡️</div>
-            <div>
-              <div class="gain-text-title">Proteção em caso de incidente</div>
-              <div class="gain-text-desc">Trilha de auditoria completa demonstra diligência. Em caso de vazamento, a documentação reduz drasticamente as penalidades.</div>
-            </div>
-          </div>
-          <div class="gain-item">
-            <div class="gain-check">💼</div>
-            <div>
-              <div class="gain-text-title">Preparado para fiscalização</div>
-              <div class="gain-text-desc">Relatórios e evidências exportáveis em minutos. Responda a qualquer autuação da ANPD com documentação sólida.</div>
-            </div>
-          </div>
-          <div class="gain-item">
-            <div class="gain-check">🤝</div>
-            <div>
-              <div class="gain-text-title">Confiança de parceiros e planos</div>
-              <div class="gain-text-desc">Convênios, seguradoras e parceiros exigem cada vez mais conformidade LGPD. Esteja à frente antes que se torne obrigação contratual.</div>
-            </div>
-          </div>
+          <div class="gain-item"><div class="gain-check">🏆</div><div><div class="gain-text-title">Diferencial competitivo</div><div class="gain-text-desc">Pacientes escolhem clínicas que provam cuidar de seus dados. Certificação LGPD vira argumento de venda.</div></div></div>
+          <div class="gain-item"><div class="gain-check">⚡</div><div><div class="gain-text-title">Processos ágeis e auditáveis</div><div class="gain-text-desc">Consentimentos, contratos e termos digitais assinados em minutos. Fim do papel e das gavetas cheias de documentos.</div></div></div>
+          <div class="gain-item"><div class="gain-check">🛡️</div><div><div class="gain-text-title">Proteção em caso de incidente</div><div class="gain-text-desc">Trilha de auditoria completa demonstra diligência. Em caso de vazamento, a documentação reduz drasticamente as penalidades.</div></div></div>
+          <div class="gain-item"><div class="gain-check">💼</div><div><div class="gain-text-title">Preparado para fiscalização</div><div class="gain-text-desc">Relatórios e evidências exportáveis em minutos. Responda a qualquer autuação da ANPD com documentação sólida.</div></div></div>
+          <div class="gain-item"><div class="gain-check">🤝</div><div><div class="gain-text-title">Confiança de parceiros e planos</div><div class="gain-text-desc">Convênios, seguradoras e parceiros exigem cada vez mais conformidade LGPD. Esteja à frente antes que se torne obrigação contratual.</div></div></div>
         </div>
       </div>
       <div>
         <div class="metrics-panel">
           <div class="metrics-title">📊 Impacto da Conformidade LGPD</div>
-          <div class="metric-row">
-            <div class="metric-row-top">
-              <span class="metric-row-label">Redução de risco de penalidades</span>
-              <span class="metric-row-val">95%</span>
-            </div>
-            <div class="metric-bar"><div class="metric-fill" style="width:95%"></div></div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-row-top">
-              <span class="metric-row-label">Aumento de confiança do paciente</span>
-              <span class="metric-row-val">87%</span>
-            </div>
-            <div class="metric-bar"><div class="metric-fill" style="width:87%"></div></div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-row-top">
-              <span class="metric-row-label">Redução de tempo em compliance</span>
-              <span class="metric-row-val">70%</span>
-            </div>
-            <div class="metric-bar"><div class="metric-fill" style="width:70%"></div></div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-row-top">
-              <span class="metric-row-label">Processos documentados e rastreáveis</span>
-              <span class="metric-row-val">100%</span>
-            </div>
-            <div class="metric-bar"><div class="metric-fill" style="width:100%"></div></div>
-          </div>
+          <div class="metric-row"><div class="metric-row-top"><span class="metric-row-label">Redução de risco de penalidades</span><span class="metric-row-val">95%</span></div><div class="metric-bar"><div class="metric-fill" style="width:95%"></div></div></div>
+          <div class="metric-row"><div class="metric-row-top"><span class="metric-row-label">Aumento de confiança do paciente</span><span class="metric-row-val">87%</span></div><div class="metric-bar"><div class="metric-fill" style="width:87%"></div></div></div>
+          <div class="metric-row"><div class="metric-row-top"><span class="metric-row-label">Redução de tempo em compliance</span><span class="metric-row-val">70%</span></div><div class="metric-bar"><div class="metric-fill" style="width:70%"></div></div></div>
+          <div class="metric-row"><div class="metric-row-top"><span class="metric-row-label">Processos documentados e rastreáveis</span><span class="metric-row-val">100%</span></div><div class="metric-bar"><div class="metric-fill" style="width:100%"></div></div></div>
           <div class="metric-stats">
-            <div>
-              <div class="metric-stat-val green">R$0</div>
-              <div class="metric-stat-label">em multas com conformidade</div>
-            </div>
-            <div>
-              <div class="metric-stat-val">15 dias</div>
-              <div class="metric-stat-label">prazo Art. 18 controlado</div>
-            </div>
-            <div>
-              <div class="metric-stat-val">100%</div>
-              <div class="metric-stat-label">auditável pela ANPD</div>
-            </div>
+            <div><div class="metric-stat-val green">R$0</div><div class="metric-stat-label">em multas com conformidade</div></div>
+            <div><div class="metric-stat-val">15 dias</div><div class="metric-stat-label">prazo Art. 18 controlado</div></div>
+            <div><div class="metric-stat-val">100%</div><div class="metric-stat-label">auditável pela ANPD</div></div>
           </div>
         </div>
       </div>
@@ -1281,71 +380,26 @@
   </div>
 </section>
 
-<!-- ══ JURÍDICO ════════════════════════════════════════════════════════════ -->
 <section class="juridico section" id="juridico">
   <div class="container">
     <div class="juridico-header">
       <span class="tag tag-indigo">⚖️ Respaldo Jurídico</span>
       <h2 class="section-title">Cada artigo da LGPD,<br/>coberto pela plataforma</h2>
-      <p class="section-sub">
-        A Destecse LGPD foi desenvolvida com base nos artigos centrais da Lei 13.709/2018.
-        Cada funcionalidade tem rastreabilidade jurídica direta.
-      </p>
+      <p class="section-sub">A Destecse LGPD foi desenvolvida com base nos artigos centrais da Lei 13.709/2018. Cada funcionalidade tem rastreabilidade jurídica direta.</p>
     </div>
     <div class="articles-grid">
-      <div class="article-card">
-        <div class="article-check">✅</div>
-        <div class="article-num">Art. 7º, I</div>
-        <div class="article-title">Consentimento para dados pessoais</div>
-        <div class="article-desc">Termos digitais com assinatura rastreável — base legal de consentimento documentada para cada processo mapeado.</div>
-      </div>
-      <div class="article-card">
-        <div class="article-check">✅</div>
-        <div class="article-num">Art. 11º, I</div>
-        <div class="article-title">Consentimento específico para dados sensíveis</div>
-        <div class="article-desc">Termos diferenciados para dados de saúde, com consentimento específico e destacado conforme exigência legal para dados sensíveis.</div>
-      </div>
-      <div class="article-card">
-        <div class="article-check">✅</div>
-        <div class="article-num">Art. 18º</div>
-        <div class="article-title">Direitos do titular de dados</div>
-        <div class="article-desc">Canal de atendimento estruturado com prazo de 15 dias controlado, registro de cada solicitação e resposta formal documentada.</div>
-      </div>
-      <div class="article-card">
-        <div class="article-check">✅</div>
-        <div class="article-num">Art. 37º</div>
-        <div class="article-title">Registro das operações de tratamento</div>
-        <div class="article-desc">Mapeamento de todos os processos com finalidade, base legal, tipo de dado, tempo de retenção e operador responsável.</div>
-      </div>
-      <div class="article-card">
-        <div class="article-check">✅</div>
-        <div class="article-num">Art. 46º</div>
-        <div class="article-title">Medidas de segurança técnica</div>
-        <div class="article-desc">Hash criptográfico em assinaturas, registro de IP, timestamps imutáveis e trilha de auditoria completa em todas as operações.</div>
-      </div>
-      <div class="article-card">
-        <div class="article-check">✅</div>
-        <div class="article-num">Art. 52º</div>
-        <div class="article-title">Evidência de conformidade para a ANPD</div>
-        <div class="article-desc">Documentação exportável que demonstra diligência e boa-fé — fundamental para mitigar penalidades em caso de fiscalização.</div>
-      </div>
-      <div class="article-card">
-        <div class="article-check">✅</div>
-        <div class="article-num">CFO-118/2012</div>
-        <div class="article-title">Retenção de prontuários odontológicos</div>
-        <div class="article-desc">Gestão do prazo de 20 anos para prontuários documentada e auditável, em conformidade simultânea com LGPD e regulamentação do CFO.</div>
-      </div>
-      <div class="article-card">
-        <div class="article-check">✅</div>
-        <div class="article-num">Art. 41º</div>
-        <div class="article-title">Encarregado de Proteção de Dados (DPO)</div>
-        <div class="article-desc">Estrutura preparada para indicação do DPO com canais de comunicação e registro de responsabilidades conforme o papel exigido pela lei.</div>
-      </div>
+      <div class="article-card"><div class="article-check">✅</div><div class="article-num">Art. 7º, I</div><div class="article-title">Consentimento para dados pessoais</div><div class="article-desc">Termos digitais com assinatura rastreável — base legal de consentimento documentada para cada processo mapeado.</div></div>
+      <div class="article-card"><div class="article-check">✅</div><div class="article-num">Art. 11º, I</div><div class="article-title">Consentimento específico para dados sensíveis</div><div class="article-desc">Termos diferenciados para dados de saúde, com consentimento específico e destacado conforme exigência legal para dados sensíveis.</div></div>
+      <div class="article-card"><div class="article-check">✅</div><div class="article-num">Art. 18º</div><div class="article-title">Direitos do titular de dados</div><div class="article-desc">Canal de atendimento estruturado com prazo de 15 dias controlado, registro de cada solicitação e resposta formal documentada.</div></div>
+      <div class="article-card"><div class="article-check">✅</div><div class="article-num">Art. 37º</div><div class="article-title">Registro das operações de tratamento</div><div class="article-desc">Mapeamento de todos os processos com finalidade, base legal, tipo de dado, tempo de retenção e operador responsável.</div></div>
+      <div class="article-card"><div class="article-check">✅</div><div class="article-num">Art. 46º</div><div class="article-title">Medidas de segurança técnica</div><div class="article-desc">Hash criptográfico em assinaturas, registro de IP, timestamps imutáveis e trilha de auditoria completa em todas as operações.</div></div>
+      <div class="article-card"><div class="article-check">✅</div><div class="article-num">Art. 52º</div><div class="article-title">Evidência de conformidade para a ANPD</div><div class="article-desc">Documentação exportável que demonstra diligência e boa-fé — fundamental para mitigar penalidades em caso de fiscalização.</div></div>
+      <div class="article-card"><div class="article-check">✅</div><div class="article-num">CFO-118/2012</div><div class="article-title">Retenção de prontuários odontológicos</div><div class="article-desc">Gestão do prazo de 20 anos para prontuários documentada e auditável, em conformidade simultânea com LGPD e regulamentação do CFO.</div></div>
+      <div class="article-card"><div class="article-check">✅</div><div class="article-num">Art. 41º</div><div class="article-title">Encarregado de Proteção de Dados (DPO)</div><div class="article-desc">Estrutura preparada para indicação do DPO com canais de comunicação e registro de responsabilidades conforme o papel exigido pela lei.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ COMO FUNCIONA ═══════════════════════════════════════════════════════ -->
 <section class="how section" id="como-funciona">
   <div class="container">
     <div class="how-header">
@@ -1354,83 +408,42 @@
       <p class="section-sub">Da implantação ao funcionamento completo em poucos dias, sem precisar de equipe jurídica interna.</p>
     </div>
     <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-title">Cadastro da empresa</div>
-        <div class="step-desc">Configure sua clínica, equipe e perfis de acesso em minutos.</div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-title">Mapeie os processos</div>
-        <div class="step-desc">Documente cada operação de tratamento de dados com base legal e finalidade.</div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-title">Envie os termos</div>
-        <div class="step-desc">Termos digitais enviados e assinados eletronicamente com validade jurídica.</div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-title">Monitore e audite</div>
-        <div class="step-desc">Dashboard em tempo real com sua posição de conformidade e histórico completo.</div>
-      </div>
+      <div class="step"><div class="step-num">1</div><div class="step-title">Cadastro da empresa</div><div class="step-desc">Configure sua clínica, equipe e perfis de acesso em minutos.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-title">Mapeie os processos</div><div class="step-desc">Documente cada operação de tratamento de dados com base legal e finalidade.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-title">Envie os termos</div><div class="step-desc">Termos digitais enviados e assinados eletronicamente com validade jurídica.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-title">Monitore e audite</div><div class="step-desc">Dashboard em tempo real com sua posição de conformidade e histórico completo.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ CTA ══════════════════════════════════════════════════════════════════ -->
 <section class="cta-section section-sm" id="contato">
   <div class="cta-bg"></div>
   <div class="container">
     <div class="cta-inner">
       <span class="tag" style="background:rgba(255,255,255,.15);color:rgba(255,255,255,.85);">📩 Entre em contato</span>
       <h2 class="cta-title">Sua clínica está pronta<br/>para a conformidade?</h2>
-      <p class="cta-sub">
-        Fale com nosso time comercial e descubra como a Destecse LGPD
-        pode proteger sua empresa e seus pacientes hoje mesmo.
-      </p>
+      <p class="cta-sub">Fale com nosso time comercial e descubra como a Destecse LGPD pode proteger sua empresa e seus pacientes hoje mesmo.</p>
       <div class="cta-actions">
-        <a href="mailto:comercial@destecse.com.br?subject=Interesse%20na%20plataforma%20Destecse%20LGPD&body=Olá,%20gostaria%20de%20conhecer%20melhor%20a%20plataforma%20Destecse%20LGPD."
-           class="btn btn-white">
-          ✉️ &nbsp; Falar com o comercial
-        </a>
-        <a href="mailto:comercial@destecse.com.br?subject=Solicito%20uma%20demonstração%20da%20Destecse%20LGPD&body=Olá,%20gostaria%20de%20agendar%20uma%20demonstração%20da%20plataforma."
-           class="btn" style="background:rgba(255,255,255,.15);color:white;border:1.5px solid rgba(255,255,255,.3);">
-          📅 &nbsp; Agendar demonstração
-        </a>
+        <a href="mailto:comercial@destecse.com.br?subject=Interesse%20na%20plataforma%20Destecse%20LGPD&body=Ol%C3%A1,%20gostaria%20de%20conhecer%20melhor%20a%20plataforma%20Destecse%20LGPD." class="btn btn-white">✉️ &nbsp; Falar com o comercial</a>
+        <a href="mailto:comercial@destecse.com.br?subject=Solicito%20uma%20demonstra%C3%A7%C3%A3o%20da%20Destecse%20LGPD&body=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20da%20plataforma." class="btn" style="background:rgba(255,255,255,.15);color:white;border:1.5px solid rgba(255,255,255,.3);">📅 &nbsp; Agendar demonstração</a>
       </div>
-      <a href="mailto:comercial@destecse.com.br" class="cta-email-link">
-        <span>📧</span> comercial@destecse.com.br
-      </a>
+      <a href="mailto:comercial@destecse.com.br" class="cta-email-link"><span>📧</span> comercial@destecse.com.br</a>
     </div>
   </div>
 </section>
 
-<!-- ══ FOOTER ══════════════════════════════════════════════════════════════ -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div>
         <div class="nav-logo">
-          <!-- LOGO FOOTER: substitua por <img src="logo-white.png" alt="Destecse" height="36"> -->
           <div class="logo-mark">D</div>
           <span class="logo-text" style="color:white;">Destecse <span>LGPD</span></span>
         </div>
-        <p class="footer-brand-desc">
-          Plataforma de gestão de conformidade LGPD para clínicas e consultórios.
-          Proteção de dados com respaldo jurídico e tecnologia.
-        </p>
-        <!-- CONTATOS: preencha com os dados reais da empresa -->
+        <p class="footer-brand-desc">Plataforma de gestão de conformidade LGPD para clínicas e consultórios. Proteção de dados com respaldo jurídico e tecnologia.</p>
         <div class="footer-contact">
-          <div class="footer-contact-item">
-            📍 &nbsp; <!-- Endereço: Rua Exemplo, 123 – Cidade/UF -->
-          </div>
-          <div class="footer-contact-item">
-            📞 &nbsp; Telefone: (83) 9283-4068
-          </div>
-          <div class="footer-contact-item">
-            📧 &nbsp; comercial@destecse.com.br
-          </div>
+          <div class="footer-contact-item">📞 &nbsp; Telefone: (83) 98233-2419</div>
+          <div class="footer-contact-item">📧 &nbsp; comercial@destecse.com.br</div>
         </div>
       </div>
       <div>
@@ -1456,23 +469,17 @@
         <ul class="footer-links">
           <li><a href="mailto:comercial@destecse.com.br">Comercial</a></li>
           <li><a href="mailto:suporte@destecse.com.br">Suporte</a></li>
-          <!-- Site: <li><a href="https://destecse.com.br">destecse.com.br</a></li> -->
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">
-        <!-- Ano: --> © 2026 Destecse. Todos os direitos reservados.
-      </span>
-      <span class="footer-lgpd-badge">
-        🛡️ Desenvolvido em conformidade com a Lei 13.709/2018
-      </span>
+      <span class="footer-copy">© 2026 Destecse. Todos os direitos reservados.</span>
+      <span class="footer-lgpd-badge">🛡️ Desenvolvido em conformidade com a Lei 13.709/2018</span>
     </div>
   </div>
 </footer>
 
 <script>
-  // Navbar shadow on scroll
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
   });
