@@ -42,7 +42,6 @@
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes pulse-ring { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.5); opacity: 0; } }
     @keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
-    @keyframes countUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .anim-fade-up  { animation: fadeUp .7s ease both; }
     .delay-1 { animation-delay: .10s; }
     .delay-2 { animation-delay: .22s; }
@@ -56,6 +55,7 @@
     .tag-indigo { background: var(--indigo-faint); color: var(--indigo); }
     .tag-red    { background: var(--red-faint);    color: var(--red); }
     .tag-green  { background: var(--green-faint);  color: var(--green); }
+    .tag-amber  { background: var(--amber-faint);  color: #92400e; }
     .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1.2; color: var(--gray-900); margin: 16px 0 12px; }
     .section-sub { font-size: 17px; color: var(--gray-500); line-height: 1.7; max-width: 600px; }
     .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 14px; padding: 14px 28px; border-radius: 10px; border: none; cursor: pointer; transition: all .2s ease; letter-spacing: .2px; }
@@ -65,18 +65,21 @@
     .btn-outline:hover { background: var(--indigo-faint); border-color: var(--indigo); }
     .btn-white { background: var(--white); color: var(--indigo); box-shadow: 0 4px 14px rgba(0,0,0,.12); }
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.18); }
+    /* ── NAVBAR ── */
     .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--gray-200); transition: box-shadow .2s; }
     .navbar.scrolled { box-shadow: var(--shadow-md); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .nav-logo { display: flex; align-items: center; gap: 12px; }
-    .logo-mark { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, var(--indigo), var(--indigo-light)); display: flex; align-items: center; justify-content: center; color: white; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 16px; }
     .logo-text { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 17px; color: var(--gray-900); }
     .logo-text span { color: var(--indigo); }
-    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
     .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-500); transition: color .15s; }
     .nav-links a:hover { color: var(--indigo); }
-    .nav-cta { display: flex; gap: 10px; }
-    @media (max-width: 768px) { .nav-links, .nav-cta .btn-outline { display: none; } }
+    .nav-cta { display: flex; gap: 10px; align-items: center; }
+    .nav-instagram { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--gray-500); padding: 8px 14px; border-radius: 8px; border: 1.5px solid var(--gray-200); transition: all .2s; }
+    .nav-instagram:hover { color: #e1306c; border-color: #e1306c; background: #fff0f5; }
+    @media (max-width: 768px) { .nav-links, .nav-cta .btn-outline, .nav-instagram { display: none; } }
+    /* ── HERO ── */
     .hero { padding-top: 140px; padding-bottom: 100px; background: var(--white); position: relative; overflow: hidden; }
     .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 60% -10%, rgba(99,102,241,.10) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 90% 80%, rgba(79,70,229,.07) 0%, transparent 70%); pointer-events: none; }
     .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -86,7 +89,7 @@
     .hero-sub { font-size: 17px; color: var(--gray-500); line-height: 1.75; margin-bottom: 36px; max-width: 480px; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
     .hero-trust { margin-top: 48px; display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--gray-400); }
-    .hero-trust-dots { display: flex; gap: -4px; }
+    .hero-trust-dots { display: flex; }
     .trust-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid white; background: linear-gradient(135deg, var(--indigo), var(--indigo-light)); margin-left: -6px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: white; font-weight: 700; }
     .hero-visual { position: relative; }
     .dashboard-card { background: var(--white); border-radius: 20px; box-shadow: 0 24px 64px rgba(0,0,0,.14), 0 0 0 1px rgba(0,0,0,.06); overflow: hidden; animation: float 5s ease-in-out infinite; }
@@ -114,6 +117,7 @@
     .badge-top-left  { top: -16px; left: -20px; }
     .badge-bot-right { bottom: 20px; right: -20px; }
     @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .hero-visual { display: none; } }
+    /* ── PAIN / MULTAS ── */
     .pain { background: var(--gray-900); position: relative; overflow: hidden; }
     .pain-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 20% 50%, rgba(239,68,68,.12) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 80% 20%, rgba(79,70,229,.15) 0%, transparent 60%); pointer-events: none; }
     .pain-header { text-align: center; margin-bottom: 64px; }
@@ -133,6 +137,33 @@
     .pain-alert-icon { font-size: 36px; flex-shrink: 0; }
     .pain-alert-text { font-size: 15px; color: rgba(255,255,255,.75); line-height: 1.65; }
     .pain-alert-text strong { color: var(--white); }
+    /* ── NOTÍCIAS / RADAR ── */
+    .radar { background: #0f0f1a; position: relative; overflow: hidden; }
+    .radar-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 50% 0%, rgba(79,70,229,.18) 0%, transparent 60%); pointer-events: none; }
+    .radar-header { text-align: center; margin-bottom: 56px; }
+    .radar-header .section-title { color: var(--white); }
+    .radar-header .section-sub { color: rgba(255,255,255,.5); margin: 0 auto; }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 48px; }
+    .news-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 28px; transition: all .25s; display: flex; flex-direction: column; gap: 14px; position: relative; overflow: hidden; }
+    .news-card:hover { border-color: rgba(99,102,241,.4); background: rgba(79,70,229,.07); transform: translateY(-3px); }
+    .news-card::after { content: '↗'; position: absolute; top: 20px; right: 20px; font-size: 16px; color: rgba(255,255,255,.2); transition: color .2s; }
+    .news-card:hover::after { color: var(--indigo-mid); }
+    .news-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; width: fit-content; }
+    .news-tag-red    { background: rgba(239,68,68,.15);  color: #fca5a5; }
+    .news-tag-amber  { background: rgba(245,158,11,.15); color: #fcd34d; }
+    .news-tag-indigo { background: rgba(99,102,241,.2);  color: var(--indigo-mid); }
+    .news-title { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: var(--white); line-height: 1.45; }
+    .news-excerpt { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.65; }
+    .news-meta { display: flex; align-items: center; gap: 8px; font-size: 11px; color: rgba(255,255,255,.3); margin-top: auto; }
+    .news-source { font-weight: 600; color: rgba(255,255,255,.45); }
+    .radar-alert { background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.2); border-radius: var(--radius); padding: 24px 32px; display: flex; align-items: flex-start; gap: 20px; }
+    .radar-alert-icon { font-size: 32px; flex-shrink: 0; margin-top: 2px; }
+    .radar-alert-title { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: #fcd34d; margin-bottom: 8px; }
+    .radar-alert-text { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.7; }
+    .radar-alert-text strong { color: rgba(255,255,255,.85); }
+    .radar-alert-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--indigo-mid); margin-top: 10px; transition: color .15s; }
+    .radar-alert-link:hover { color: white; }
+    /* ── FEATURES ── */
     .features { background: var(--white); }
     .features-header { margin-bottom: 64px; }
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
@@ -140,10 +171,15 @@
     .feature-card:hover { border-color: var(--indigo-mid); box-shadow: 0 8px 32px rgba(79,70,229,.10); transform: translateY(-3px); }
     .feature-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--indigo), var(--indigo-light)); opacity: 0; transition: opacity .25s; }
     .feature-card:hover::after { opacity: 1; }
+    .feature-card.highlight { border-color: var(--indigo-mid); background: var(--indigo-faint); }
+    .feature-card.highlight::after { opacity: 1; }
     .feature-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--indigo-faint); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; }
+    .feature-card.highlight .feature-icon { background: white; }
     .feature-title { font-size: 17px; font-weight: 700; color: var(--gray-900); margin-bottom: 10px; }
     .feature-desc { font-size: 14px; color: var(--gray-500); line-height: 1.7; }
     .feature-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-top: 16px; }
+    .feature-new { position: absolute; top: 16px; right: 16px; font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: linear-gradient(135deg, var(--indigo), var(--indigo-light)); color: white; padding: 3px 8px; border-radius: 100px; }
+    /* ── GAINS ── */
     .gains { background: var(--indigo-faint); }
     .gains-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .gain-list { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
@@ -164,6 +200,7 @@
     .metric-stat-val.green { color: var(--green); }
     .metric-stat-label { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
     @media (max-width: 860px) { .gains-grid { grid-template-columns: 1fr; } }
+    /* ── JURÍDICO ── */
     .juridico { background: var(--white); }
     .juridico-header { text-align: center; margin-bottom: 64px; }
     .juridico-header .section-sub { margin: 0 auto; }
@@ -174,6 +211,7 @@
     .article-title { font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
     .article-desc { font-size: 13px; color: var(--gray-500); line-height: 1.65; }
     .article-check { position: absolute; top: 20px; right: 20px; width: 24px; height: 24px; border-radius: 50%; background: var(--green-faint); display: flex; align-items: center; justify-content: center; font-size: 12px; }
+    /* ── HOW ── */
     .how { background: var(--gray-50); }
     .how-header { text-align: center; margin-bottom: 64px; }
     .how-header .section-sub { margin: 0 auto; }
@@ -184,6 +222,21 @@
     .step-title { font-size: 15px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
     .step-desc { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
     @media (max-width: 700px) { .steps::before { display: none; } .steps { gap: 40px; } }
+    /* ── SOCIAL PROOF ── */
+    .social-section { background: var(--white); border-top: 1px solid var(--gray-100); }
+    .social-inner { display: flex; flex-direction: column; align-items: center; gap: 32px; text-align: center; }
+    .social-title { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; color: var(--gray-900); }
+    .social-title span { color: var(--indigo); }
+    .social-cards { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .social-card { display: flex; align-items: center; gap: 14px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 16px; padding: 20px 28px; transition: all .2s; }
+    .social-card:hover { border-color: var(--indigo-mid); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .social-card-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .social-card-icon.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .social-card-icon.anpd { background: var(--indigo-faint); }
+    .social-card-label { font-size: 11px; color: var(--gray-400); font-weight: 500; margin-bottom: 2px; }
+    .social-card-name { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: var(--gray-900); }
+    .social-card-sub { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+    /* ── CTA ── */
     .cta-section { background: linear-gradient(135deg, var(--indigo-dark) 0%, var(--indigo) 50%, var(--indigo-light) 100%); position: relative; overflow: hidden; }
     .cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 50% 80% at 80% 50%, rgba(255,255,255,.06) 0%, transparent 60%), radial-gradient(ellipse 30% 40% at 10% 20%, rgba(255,255,255,.04) 0%, transparent 60%); pointer-events: none; }
     .cta-inner { text-align: center; position: relative; }
@@ -192,6 +245,7 @@
     .cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
     .cta-email-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 600; color: rgba(255,255,255,.7); margin-top: 24px; transition: color .15s; }
     .cta-email-link:hover { color: white; }
+    /* ── FOOTER ── */
     .footer { background: var(--gray-900); padding: 60px 0 32px; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
     .footer-brand-desc { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.75; margin-top: 14px; max-width: 260px; }
@@ -201,6 +255,8 @@
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-links a { font-size: 13px; color: rgba(255,255,255,.45); transition: color .15s; }
     .footer-links a:hover { color: var(--indigo-mid); }
+    .footer-instagram { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,.45); margin-top: 16px; padding: 8px 14px; border: 1px solid rgba(255,255,255,.1); border-radius: 8px; transition: all .2s; }
+    .footer-instagram:hover { color: #e1306c; border-color: #e1306c; background: rgba(225,48,108,.08); }
     .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     .footer-copy { font-size: 12px; color: rgba(255,255,255,.3); }
     .footer-lgpd-badge { font-size: 11px; color: rgba(255,255,255,.4); display: flex; align-items: center; gap: 6px; }
@@ -210,6 +266,7 @@
 </head>
 <body>
 
+<!-- ── NAVBAR ── -->
 <nav class="navbar" id="navbar">
   <div class="container">
     <div class="nav-inner">
@@ -219,18 +276,24 @@
       </a>
       <ul class="nav-links">
         <li><a href="#funcionalidades">Funcionalidades</a></li>
+        <li><a href="#radar">Radar ANPD</a></li>
         <li><a href="#ganhos">Ganhos</a></li>
         <li><a href="#juridico">Respaldo Jur&#237;dico</a></li>
         <li><a href="#como-funciona">Como Funciona</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="#contato" class="btn btn-outline">Quero descobrir se minha cl&#237;nica est&#225; em risco</a>
+        <a href="https://www.instagram.com/destecse" target="_blank" class="nav-instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @destecse
+        </a>
+        <a href="#contato" class="btn btn-outline">Descobrir meu risco</a>
         <a href="#contato" class="btn btn-primary">Conhecer a plataforma &#8594;</a>
       </div>
     </div>
   </div>
 </nav>
 
+<!-- ── HERO ── -->
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
   <div class="container">
@@ -307,13 +370,14 @@
   </div>
 </section>
 
+<!-- ── MULTAS ── -->
 <section class="pain section" id="multas">
   <div class="pain-bg"></div>
   <div class="container">
     <div class="pain-header">
       <span class="tag tag-red">&#9888;&#65039; O Risco Real</span>
-      <h2 class="section-title">Sua cl&#237;nica pode estar em risco &#8212; mesmo voc&#234; acreditando que est&#225; tudo certo.<br/>Na pr&#225;tica, esse risco come&#231;a nos pequenos erros do dia a dia.</h2>
-      <p class="section-sub">Um erro no uso de dados de pacientes pode gerar multas, bloqueios e at&#233; exposi&#231;&#227;o p&#250;blica. E isso j&#225; est&#225; acontecendo na pr&#225;tica. As penalidades da LGPD j&#225; est&#227;o sendo aplicadas.</p>
+      <h2 class="section-title">Sua cl&#237;nica pode estar em risco &#8212;<br/>mesmo voc&#234; acreditando que est&#225; tudo certo.</h2>
+      <p class="section-sub">Um erro no uso de dados de pacientes pode gerar multas, bloqueios e at&#233; exposi&#231;&#227;o p&#250;blica. As penalidades da LGPD j&#225; est&#227;o sendo aplicadas.</p>
     </div>
     <div class="fine-cards">
       <div class="fine-card"><div class="fine-card-icon">&#128184;</div><div class="fine-card-value">2%</div><div class="fine-card-label">do faturamento anual</div><div class="fine-card-desc">Multa simples por infra&#231;&#227;o, calculada sobre o faturamento bruto do &#250;ltimo exerc&#237;cio &#8212; limitada a R$ 50 milh&#245;es por infra&#231;&#227;o.</div></div>
@@ -322,10 +386,81 @@
       <div class="fine-card"><div class="fine-card-icon">&#128227;</div><div class="fine-card-value">P&#250;blica</div><div class="fine-card-label">divulga&#231;&#227;o da infra&#231;&#227;o</div><div class="fine-card-desc">Publiciza&#231;&#227;o da infra&#231;&#227;o ap&#243;s apura&#231;&#227;o &#8212; dano irrepar&#225;vel &#224; reputa&#231;&#227;o da cl&#237;nica perante pacientes e parceiros.</div></div>
     </div>
     <div class="pain-alert"><div class="pain-alert-icon">&#9878;&#65039;</div><div class="pain-alert-text"><strong>Art. 52 da LGPD</strong> &#8212; As san&#231;&#245;es s&#227;o aplicadas pela ANPD ap&#243;s procedimento administrativo. Cl&#237;nicas que coletam dados sens&#237;veis de sa&#250;de est&#227;o sujeitas a <strong>penalidades agravadas</strong>, pois dados de sa&#250;de s&#227;o classificados como dados pessoais sens&#237;veis (Art. 11). <strong>N&#227;o ter processos documentados &#233; evid&#234;ncia de neglig&#234;ncia.</strong></div></div>
-    <p class="fine-source">Fonte: <strong>Lei n.&#186; 13.709/2018 &#8212; Lei Geral de Prote&#231;&#227;o de Dados Pessoais (LGPD)</strong> &middot; Art. 52 e seguintes</p>
+    <p class="fine-source">Fonte: <strong>Lei n.&#186; 13.709/2018 &#8212; LGPD</strong> &middot; Art. 52 e seguintes</p>
   </div>
 </section>
 
+<!-- ── RADAR ANPD — NOTÍCIAS ── -->
+<section class="radar section" id="radar">
+  <div class="radar-bg"></div>
+  <div class="container">
+    <div class="radar-header">
+      <span class="tag" style="background:rgba(99,102,241,.2);color:#a5b4fc;">&#128248; Radar ANPD</span>
+      <h2 class="section-title" style="color:white;">O que est&#225; acontecendo<br/>no mercado de sa&#250;de</h2>
+      <p class="section-sub">A ANPD intensificou a fiscaliza&#231;&#227;o. Veja o que j&#225; est&#225; acontecendo com empresas do setor &#8212; e o que vem por a&#237;.</p>
+    </div>
+
+    <div class="news-grid">
+
+      <a href="https://www.gov.br/anpd/pt-br/assuntos/noticias/anpd-fiscaliza-20-empresas-por-falta-de-encarregado-e-canal-de-comunicacao" target="_blank" rel="noopener" class="news-card">
+        <span class="news-tag news-tag-red">&#128680; Fiscaliza&#231;&#227;o ativa</span>
+        <div class="news-title">ANPD fiscaliza 20 empresas por falta de Encarregado e canal de comunica&#231;&#227;o &#8212; setor sa&#250;de na lista</div>
+        <div class="news-excerpt">A ANPD instaurou processo contra 20 grandes empresas, incluindo do setor de sa&#250;de, por n&#227;o indicarem um Encarregado de Dados (DPO) funcional. Empresas que n&#227;o se adequarem poder&#227;o ser multadas.</div>
+        <div class="news-meta"><span class="news-source">gov.br/anpd</span><span>&middot;</span><span>Dez 2024</span></div>
+      </a>
+
+      <a href="https://www.barbieriadvogados.com/multa-lgpd/" target="_blank" rel="noopener" class="news-card">
+        <span class="news-tag news-tag-amber">&#9888;&#65039; Setor sa&#250;de</span>
+        <div class="news-title">Setor de sa&#250;de &#233; o de maior risco regulat&#243;rio sob a LGPD no Brasil</div>
+        <div class="news-excerpt">Dados de sa&#250;de s&#227;o classificados como dados sens&#237;veis pelo Art. 11 da LGPD, sujeitando hospitais, cl&#237;nicas e laborat&#243;rios ao regime mais restritivo e &#224;s maiores penalidades previstas na lei.</div>
+        <div class="news-meta"><span class="news-source">barbieriadvogados.com</span><span>&middot;</span><span>Mar 2026</span></div>
+      </a>
+
+      <a href="https://pessoaepessoa.com.br/imprensa/anpd-nao-multou-empresas-por-violacao-da-lgpd-em-2024/" target="_blank" rel="noopener" class="news-card">
+        <span class="news-tag news-tag-indigo">&#128202; Tend&#234;ncia 2025</span>
+        <div class="news-title">ANPD aumenta fiscaliza&#231;&#227;o em 2025 ap&#243;s ano de regula&#231;&#227;o intensa</div>
+        <div class="news-excerpt">Com novas resolu&#231;&#245;es publicadas em 2024 &#8212; incluindo a obrigatoriedade de DPO &#8212; a ANPD amplia fiscaliza&#231;&#227;o. Especialistas apontam sa&#250;de, financeiro e tecnologia como setores priorit&#225;rios.</div>
+        <div class="news-meta"><span class="news-source">pessoaepessoa.com.br</span><span>&middot;</span><span>Jan 2025</span></div>
+      </a>
+
+      <a href="https://www.totvs.com/blog/adequacao-a-legislacao/dosimetria/" target="_blank" rel="noopener" class="news-card">
+        <span class="news-tag news-tag-red">&#128178; Multa aplicada</span>
+        <div class="news-title">Primeira multa da ANPD aplicada &#8212; Telekall R$ 14,4 mil por comercializa&#231;&#227;o indevida de dados</div>
+        <div class="news-excerpt">A Telekall Infoservice foi a primeira empresa multada pela ANPD em 2023 por usar dados pessoais em campanhas eleitorais sem base legal adequada. O caso estabeleceu precedente para futuras san&#231;&#245;es.</div>
+        <div class="news-meta"><span class="news-source">totvs.com</span><span>&middot;</span><span>2023</span></div>
+      </a>
+
+      <a href="https://www.gov.br/anpd/pt-br/assuntos/noticias" target="_blank" rel="noopener" class="news-card">
+        <span class="news-tag news-tag-indigo">&#128209; Regulamenta&#231;&#227;o</span>
+        <div class="news-title">Resolu&#231;&#227;o CD/ANPD n&#186; 15/2024 &#8212; prazo de 3 dias para notificar incidentes de seguran&#231;a</div>
+        <div class="news-excerpt">Nova resolu&#231;&#227;o obriga empresas a comunicar incidentes de vazamento &#224; ANPD em at&#233; 3 dias &#250;teis. Notifica&#231;&#227;o tardia &#233; prevista como agravante na dosimetria das san&#231;&#245;es.</div>
+        <div class="news-meta"><span class="news-source">gov.br/anpd</span><span>&middot;</span><span>2024</span></div>
+      </a>
+
+      <a href="https://www.gov.br/anpd/pt-br/assuntos/noticias" target="_blank" rel="noopener" class="news-card">
+        <span class="news-tag news-tag-amber">&#128101; Crian&#231;as e adolescentes</span>
+        <div class="news-title">ANPD prioriza em 2025 dados de crian&#231;as &#8212; cl&#237;nicas pedi&#225;tricas em alerta</div>
+        <div class="news-excerpt">A Resolu&#231;&#227;o n&#186; 23/2024 define o tratamento de dados de crian&#231;as e adolescentes como pauta priorit&#225;ria da ANPD para 2025, com regras mais restritivas que exigem consentimento parental verificado.</div>
+        <div class="news-meta"><span class="news-source">gov.br/anpd</span><span>&middot;</span><span>2025</span></div>
+      </a>
+
+    </div>
+
+    <div class="radar-alert">
+      <div class="radar-alert-icon">&#128270;</div>
+      <div>
+        <div class="radar-alert-title">O que a ANPD verifica primeiro em uma cl&#237;nica</div>
+        <div class="radar-alert-text">
+          Com base nos processos j&#225; instaurados, a ANPD prioriza: <strong>exist&#234;ncia e contato p&#250;blico do DPO/Encarregado</strong>, <strong>base legal documentada para tratamento de dados sens&#237;veis</strong>, <strong>canal funcional para solicita&#231;&#245;es do titular</strong> e <strong>plano de resposta a incidentes</strong>. Todos esses pontos s&#227;o cobertos pela Destecse LGPD.
+        </div>
+        <a href="https://www.gov.br/anpd/pt-br/assuntos/noticias" target="_blank" class="radar-alert-link">Ver not&#237;cias oficiais da ANPD &#8594;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
 <section class="features section" id="funcionalidades">
   <div class="container">
     <div class="features-header">
@@ -334,19 +469,48 @@
       <p class="section-sub">Ferramentas desenvolvidas especificamente para cl&#237;nicas e consult&#243;rios que precisam de conformidade LGPD sem complica&#231;&#227;o.</p>
     </div>
     <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon">&#128506;&#65039;</div><div class="feature-title">Mapeamento de Processos</div><div class="feature-desc">Cadastre e documente todos os processos que envolvem dados pessoais &#8212; finalidade, base legal, tipo de dado e prazo de reten&#231;&#227;o. Cada processo vira um ativo audit&#225;vel.</div><span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">Art. 7&#186; e Art. 11&#186;</span></div>
-      <div class="feature-card"><div class="feature-icon">&#9997;&#65039;</div><div class="feature-title">Termos Digitais com Assinatura</div><div class="feature-desc">Envio autom&#225;tico de termos por e-mail com link de assinatura. Registro com IP, timestamp e hash criptogr&#225;fico &#8212; prova jur&#237;dica do consentimento.</div><span class="feature-badge" style="background:#ecfdf5;color:#059669;">V&#225;lido juridicamente</span></div>
-      <div class="feature-card"><div class="feature-icon">&#128044;</div><div class="feature-title">Canal do Titular (Art. 18)</div><div class="feature-desc">Portal para receber solicita&#231;&#245;es de acesso, corre&#231;&#227;o e revoga&#231;&#227;o. Controle de prazo de 15 dias com alertas autom&#225;ticos e registro de resposta com anexos.</div><span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">Art. 18 LGPD</span></div>
-      <div class="feature-card"><div class="feature-icon">&#128202;</div><div class="feature-title">Avalia&#231;&#227;o de Conformidade</div><div class="feature-desc">Question&#225;rio de maturidade LGPD com pontua&#231;&#227;o automatizada, risco calculado (baixo/m&#233;dio/alto/cr&#237;tico) e hist&#243;rico comparativo entre avalia&#231;&#245;es.</div><span class="feature-badge" style="background:#fffbeb;color:#d97706;">Diagn&#243;stico cont&#237;nuo</span></div>
-      <div class="feature-card"><div class="feature-icon">&#128101;</div><div class="feature-title">Gest&#227;o de Colaboradores</div><div class="feature-desc">Cadastro de equipe com envio de termos espec&#237;ficos por fun&#231;&#227;o. Controle de quem assinou o qu&#234;, com data, IP e vers&#227;o do documento.</div><span class="feature-badge" style="background:#ecfdf5;color:#059669;">Rastre&#225;vel</span></div>
-      <div class="feature-card"><div class="feature-icon">&#129302;</div><div class="feature-title">Assistente LGPD via Chat</div><div class="feature-desc">Chat guiado que permite cadastrar colaboradores, abrir solicita&#231;&#245;es de titular, iniciar avalia&#231;&#245;es e tirar d&#250;vidas sobre a lei &#8212; tudo em linguagem simples.</div><span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">IA assistida</span></div>
-      <div class="feature-card"><div class="feature-icon">&#128269;</div><div class="feature-title">Trilha de Auditoria Completa</div><div class="feature-desc">Cada a&#231;&#227;o registrada com IP, usu&#225;rio, timestamp e hash. Hist&#243;rico imut&#225;vel que serve como evid&#234;ncia em caso de fiscaliza&#231;&#227;o da ANPD.</div><span class="feature-badge" style="background:#fef2f2;color:#ef4444;">Art. 52 LGPD</span></div>
-      <div class="feature-card"><div class="feature-icon">&#128193;</div><div class="feature-title">Reten&#231;&#227;o Documental</div><div class="feature-desc">Gest&#227;o do ciclo de vida de documentos com prazo de reten&#231;&#227;o configur&#225;vel. Atende CFO-118/2012 (20 anos para prontu&#225;rios) e LGPD simultaneamente.</div><span class="feature-badge" style="background:#fffbeb;color:#d97706;">CFO-118/2012</span></div>
-      <div class="feature-card"><div class="feature-icon">&#128231;</div><div class="feature-title">Notifica&#231;&#245;es Autom&#225;ticas</div><div class="feature-desc">E-mails transacionais com design profissional enviados automaticamente: termos pendentes, respostas a solicita&#231;&#245;es e alertas de prazo vencendo.</div><span class="feature-badge" style="background:#ecfdf5;color:#059669;">Automatizado</span></div>
+
+      <div class="feature-card"><div class="feature-icon">&#128506;&#65039;</div><div class="feature-title">Mapeamento de Processos</div><div class="feature-desc">Cadastre e documente todos os processos que envolvem dados pessoais com base legal, tipo de dado e prazo de reten&#231;&#227;o. Os selects s&#227;o guiados pela pr&#243;pria lei &#8212; o sistema impede combina&#231;&#245;es juridicamente inv&#225;lidas.</div><span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">Art. 7&#186; e Art. 11&#186;</span></div>
+
+      <div class="feature-card"><div class="feature-icon">&#9997;&#65039;</div><div class="feature-title">Termos Digitais com Assinatura</div><div class="feature-desc">Envio autom&#225;tico de termos por e-mail com link de assinatura. Registro com IP, timestamp e hash criptogr&#225;fico &#8212; prova jur&#237;dica do consentimento aceita pela ANPD.</div><span class="feature-badge" style="background:#ecfdf5;color:#059669;">V&#225;lido juridicamente</span></div>
+
+      <div class="feature-card"><div class="feature-icon">&#128044;</div><div class="feature-title">Canal do Titular (Art. 18)</div><div class="feature-desc">Portal para receber solicita&#231;&#245;es de acesso, corre&#231;&#227;o e revoga&#231;&#227;o de dados. Controle autom&#225;tico do prazo de 15 dias com alertas e registro completo de cada resposta.</div><span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">Art. 18 LGPD</span></div>
+
+      <div class="feature-card"><div class="feature-icon">&#128202;</div><div class="feature-title">Avalia&#231;&#227;o de Conformidade</div><div class="feature-desc">Question&#225;rio de maturidade LGPD com pontua&#231;&#227;o automatizada, risco calculado (baixo/m&#233;dio/alto/cr&#237;tico) e hist&#243;rico comparativo entre avalia&#231;&#245;es. Base para emiss&#227;o do Selo de Conformidade.</div><span class="feature-badge" style="background:#fffbeb;color:#d97706;">Diagn&#243;stico cont&#237;nuo</span></div>
+
+      <div class="feature-card highlight">
+        <div class="feature-new">Novo</div>
+        <div class="feature-icon">&#127942;</div>
+        <div class="feature-title">Selo Digital de Conformidade</div>
+        <div class="feature-desc">Ap&#243;s atingir score m&#237;nimo na avalia&#231;&#227;o, a plataforma emite um Selo de Conformidade LGPD com QR code p&#250;blico e verific&#225;vel. Use no site da cl&#237;nica, na recep&#231;&#227;o e no WhatsApp Business como diferencial competitivo.</div>
+        <span class="feature-badge" style="background:white;color:#4f46e5;">Certificado + QR Code</span>
+      </div>
+
+      <div class="feature-card highlight">
+        <div class="feature-new">Novo</div>
+        <div class="feature-icon">&#128276;</div>
+        <div class="feature-title">Alertas Proativos Autom&#225;ticos</div>
+        <div class="feature-desc">O sistema monitora sua conformidade 24h e envia alertas por e-mail automaticamente: termos n&#227;o assinados, avalia&#231;&#227;o desatualizada, prazos de reten&#231;&#227;o vencendo e solicita&#231;&#245;es do titular pr&#243;ximas do limite legal.</div>
+        <span class="feature-badge" style="background:white;color:#4f46e5;">Monitoramento di&#225;rio</span>
+      </div>
+
+      <div class="feature-card"><div class="feature-icon">&#128101;</div><div class="feature-title">Gest&#227;o de Colaboradores</div><div class="feature-desc">Cadastro da equipe com suporte a dependentes, envio de termos espec&#237;ficos por fun&#231;&#227;o e controle de quem assinou o qu&#234;, com data, IP e vers&#227;o do documento. Rastreabilidade total.</div><span class="feature-badge" style="background:#ecfdf5;color:#059669;">Rastre&#225;vel</span></div>
+
+      <div class="feature-card"><div class="feature-icon">&#129302;</div><div class="feature-title">Assistente LGPD via Chat</div><div class="feature-desc">Chat guiado com intelig&#234;ncia para cadastrar processos (com cascata legal autom&#225;tica), colaboradores, avalia&#231;&#245;es e solicita&#231;&#245;es de titular &#8212; tudo em linguagem simples, sem precisar saber a lei.</div><span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">IA assistida</span></div>
+
+      <div class="feature-card"><div class="feature-icon">&#128269;</div><div class="feature-title">Trilha de Auditoria Completa</div><div class="feature-desc">Cada a&#231;&#227;o registrada com IP, usu&#225;rio, timestamp e hash. Hist&#243;rico imut&#225;vel que serve como evid&#234;ncia em caso de fiscaliza&#231;&#227;o da ANPD &#8212; a documenta&#231;&#227;o que reduz drasticamente penalidades.</div><span class="feature-badge" style="background:#fef2f2;color:#ef4444;">Art. 52 LGPD</span></div>
+
+      <div class="feature-card"><div class="feature-icon">&#128193;</div><div class="feature-title">Reten&#231;&#227;o Documental</div><div class="feature-desc">Gest&#227;o do ciclo de vida de documentos com prazo configur&#225;vel. Atende CFO-118/2012 (20 anos para prontu&#225;rios) e LGPD simultaneamente &#8212; com alerta autom&#225;tico antes do vencimento.</div><span class="feature-badge" style="background:#fffbeb;color:#d97706;">CFO-118/2012</span></div>
+
+      <div class="feature-card"><div class="feature-icon">&#128231;</div><div class="feature-title">Notifica&#231;&#245;es Autom&#225;ticas</div><div class="feature-desc">E-mails transacionais com design profissional enviados automaticamente: convites de assinatura, confirma&#231;&#245;es, alertas de prazo e respostas a solicita&#231;&#245;es &#8212; tudo rastreado.</div><span class="feature-badge" style="background:#ecfdf5;color:#059669;">Automatizado</span></div>
+
+      <div class="feature-card"><div class="feature-icon">&#128274;</div><div class="feature-title">Autentica&#231;&#227;o Segura com 2FA</div><div class="feature-desc">Login com verifica&#231;&#227;o em duas etapas via SMS e suporte multi-empresa &#8212; cada cl&#237;nica acessa apenas seus pr&#243;prios dados. Isolamento completo entre empresas na mesma plataforma.</div><span class="feature-badge" style="background:#eef2ff;color:#4f46e5;">Art. 46&#186; LGPD</span></div>
+
     </div>
   </div>
 </section>
 
+<!-- ── GAINS ── -->
 <section class="gains section" id="ganhos">
   <div class="container">
     <div class="gains-grid">
@@ -355,11 +519,12 @@
         <h2 class="section-title">Muito al&#233;m de evitar multas</h2>
         <p class="section-sub">Empresas com processos LGPD mapeados ganham credibilidade, efici&#234;ncia e uma vantagem competitiva real no mercado.</p>
         <div class="gain-list">
-          <div class="gain-item"><div class="gain-check">&#127942;</div><div><div class="gain-text-title">Diferencial competitivo</div><div class="gain-text-desc">Pacientes escolhem cl&#237;nicas que provam cuidar de seus dados. Certifica&#231;&#227;o LGPD vira argumento de venda.</div></div></div>
+          <div class="gain-item"><div class="gain-check">&#127942;</div><div><div class="gain-text-title">Diferencial competitivo com Selo Verificado</div><div class="gain-text-desc">Pacientes escolhem cl&#237;nicas que provam cuidar de seus dados. O QR code do Selo Destecse LGPD na recep&#231;&#227;o vira argumento de venda instant&#226;neo.</div></div></div>
           <div class="gain-item"><div class="gain-check">&#9889;</div><div><div class="gain-text-title">Processos &#225;geis e audit&#225;veis</div><div class="gain-text-desc">Consentimentos, contratos e termos digitais assinados em minutos. Fim do papel e das gavetas cheias de documentos.</div></div></div>
           <div class="gain-item"><div class="gain-check">&#128737;&#65039;</div><div><div class="gain-text-title">Prote&#231;&#227;o em caso de incidente</div><div class="gain-text-desc">Trilha de auditoria completa demonstra dilig&#234;ncia. Em caso de vazamento, a documenta&#231;&#227;o reduz drasticamente as penalidades.</div></div></div>
-          <div class="gain-item"><div class="gain-check">&#128188;</div><div><div class="gain-text-title">Preparado para fiscaliza&#231;&#227;o</div><div class="gain-text-desc">Relat&#243;rios e evid&#234;ncias export&#225;veis em minutos. Responda a qualquer autua&#231;&#227;o da ANPD com documenta&#231;&#227;o s&#243;lida.</div></div></div>
-          <div class="gain-item"><div class="gain-check">&#129309;</div><div><div class="gain-text-title">Confian&#231;a de parceiros e planos</div><div class="gain-text-desc">Conv&#234;nios, seguradoras e parceiros exigem cada vez mais conformidade LGPD. Esteja &#224; frente antes que se torne obriga&#231;&#227;o contratual.</div></div></div>
+          <div class="gain-item"><div class="gain-check">&#128188;</div><div><div class="gain-text-title">Preparado para fiscaliza&#231;&#227;o da ANPD</div><div class="gain-text-desc">Relat&#243;rios e evid&#234;ncias export&#225;veis em minutos. Responda a qualquer autua&#231;&#227;o com documenta&#231;&#227;o s&#243;lida e organizada.</div></div></div>
+          <div class="gain-item"><div class="gain-check">&#129309;</div><div><div class="gain-text-title">Confian&#231;a de parceiros e conv&#234;nios</div><div class="gain-text-desc">Conv&#234;nios, seguradoras e parceiros exigem cada vez mais conformidade LGPD. Esteja &#224; frente antes que se torne obriga&#231;&#227;o contratual.</div></div></div>
+          <div class="gain-item"><div class="gain-check">&#128276;</div><div><div class="gain-text-title">Zero surpresas com alertas proativos</div><div class="gain-text-desc">Receba notifica&#231;&#245;es antes que prazos vençam. O sistema trabalha por voc&#234; mesmo quando voc&#234; n&#227;o est&#225; na plataforma.</div></div></div>
         </div>
       </div>
       <div>
@@ -380,6 +545,7 @@
   </div>
 </section>
 
+<!-- ── JURÍDICO ── -->
 <section class="juridico section" id="juridico">
   <div class="container">
     <div class="juridico-header">
@@ -389,17 +555,19 @@
     </div>
     <div class="articles-grid">
       <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 7&#186;, I</div><div class="article-title">Consentimento para dados pessoais</div><div class="article-desc">Termos digitais com assinatura rastre&#225;vel &#8212; base legal de consentimento documentada para cada processo mapeado.</div></div>
-      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 11&#186;, I</div><div class="article-title">Consentimento espec&#237;fico para dados sens&#237;veis</div><div class="article-desc">Termos diferenciados para dados de sa&#250;de, com consentimento espec&#237;fico e destacado conforme exig&#234;ncia legal para dados sens&#237;veis.</div></div>
-      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 18&#186;</div><div class="article-title">Direitos do titular de dados</div><div class="article-desc">Canal de atendimento estruturado com prazo de 15 dias controlado, registro de cada solicita&#231;&#227;o e resposta formal documentada.</div></div>
+      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 11&#186;, I</div><div class="article-title">Consentimento espec&#237;fico para dados sens&#237;veis</div><div class="article-desc">Termos diferenciados para dados de sa&#250;de com consentimento espec&#237;fico e destacado conforme exig&#234;ncia legal.</div></div>
+      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 14&#186;</div><div class="article-title">Prote&#231;&#227;o de dados de crian&#231;as</div><div class="article-desc">Regras espec&#237;ficas para tratamento de dados de menores &#8212; base legal restrita a consentimento parental verificado e obriga&#231;&#227;o legal.</div></div>
+      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 18&#186;</div><div class="article-title">Direitos do titular de dados</div><div class="article-desc">Canal de atendimento estruturado com prazo de 15 dias controlado e registro de cada solicita&#231;&#227;o e resposta.</div></div>
       <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 37&#186;</div><div class="article-title">Registro das opera&#231;&#245;es de tratamento</div><div class="article-desc">Mapeamento de todos os processos com finalidade, base legal, tipo de dado, tempo de reten&#231;&#227;o e operador respons&#225;vel.</div></div>
-      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 46&#186;</div><div class="article-title">Medidas de seguran&#231;a t&#233;cnica</div><div class="article-desc">Hash criptogr&#225;fico em assinaturas, registro de IP, timestamps imut&#225;veis e trilha de auditoria completa em todas as opera&#231;&#245;es.</div></div>
-      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 52&#186;</div><div class="article-title">Evid&#234;ncia de conformidade para a ANPD</div><div class="article-desc">Documenta&#231;&#227;o export&#225;vel que demonstra dilig&#234;ncia e boa-f&#233; &#8212; fundamental para mitigar penalidades em caso de fiscaliza&#231;&#227;o.</div></div>
-      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">CFO-118/2012</div><div class="article-title">Reten&#231;&#227;o de prontu&#225;rios odontol&#243;gicos</div><div class="article-desc">Gest&#227;o do prazo de 20 anos para prontu&#225;rios documentada e audit&#225;vel, em conformidade simult&#226;nea com LGPD e regulamenta&#231;&#227;o do CFO.</div></div>
-      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 41&#186;</div><div class="article-title">Encarregado de Prote&#231;&#227;o de Dados (DPO)</div><div class="article-desc">Estrutura preparada para indica&#231;&#227;o do DPO com canais de comunica&#231;&#227;o e registro de responsabilidades conforme o papel exigido pela lei.</div></div>
+      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 41&#186;</div><div class="article-title">Encarregado de Prote&#231;&#227;o de Dados (DPO)</div><div class="article-desc">Estrutura para indica&#231;&#227;o e registro do DPO &#8212; primeiro item verificado pela ANPD em qualquer fiscaliza&#231;&#227;o.</div></div>
+      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 46&#186;</div><div class="article-title">Medidas de seguran&#231;a t&#233;cnica</div><div class="article-desc">Hash criptogr&#225;fico em assinaturas, 2FA, registro de IP, timestamps imut&#225;veis e trilha de auditoria completa.</div></div>
+      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">Art. 52&#186;</div><div class="article-title">Evid&#234;ncia de conformidade para a ANPD</div><div class="article-desc">Documenta&#231;&#227;o export&#225;vel que demonstra dilig&#234;ncia &#8212; fundamental para mitigar penalidades em caso de fiscaliza&#231;&#227;o.</div></div>
+      <div class="article-card"><div class="article-check">&#9989;</div><div class="article-num">CFO-118/2012</div><div class="article-title">Reten&#231;&#227;o de prontu&#225;rios odontol&#243;gicos</div><div class="article-desc">Gest&#227;o do prazo de 20 anos para prontu&#225;rios, audit&#225;vel e em conformidade simult&#226;nea com LGPD e CFO.</div></div>
     </div>
   </div>
 </section>
 
+<!-- ── COMO FUNCIONA ── -->
 <section class="how section" id="como-funciona">
   <div class="container">
     <div class="how-header">
@@ -409,13 +577,46 @@
     </div>
     <div class="steps">
       <div class="step"><div class="step-num">1</div><div class="step-title">Cadastro da empresa</div><div class="step-desc">Configure sua cl&#237;nica, equipe e perfis de acesso em minutos.</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-title">Mapeie os processos</div><div class="step-desc">Documente cada opera&#231;&#227;o de tratamento de dados com base legal e finalidade.</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-title">Envie os termos</div><div class="step-desc">Termos digitais enviados e assinados eletronicamente com validade jur&#237;dica.</div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-title">Monitore e audite</div><div class="step-desc">Dashboard em tempo real com sua posi&#231;&#227;o de conformidade e hist&#243;rico completo.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-title">Mapeie os processos</div><div class="step-desc">Documente cada opera&#231;&#227;o com base legal e finalidade &#8212; o sistema guia cada escolha conforme a LGPD.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-title">Envie os termos</div><div class="step-desc">Termos digitais enviados e assinados eletronicamente com validade jur&#237;dica plena.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-title">Monitore e certifique</div><div class="step-desc">Dashboard em tempo real, alertas autom&#225;ticos e Selo de Conformidade para exibir aos seus pacientes.</div></div>
     </div>
   </div>
 </section>
 
+<!-- ── SOCIAL ── -->
+<section class="social-section section-sm" id="social">
+  <div class="container">
+    <div class="social-inner">
+      <h2 class="social-title">Siga a <span>Destecse</span> e fique por dentro</h2>
+      <p style="font-size:15px;color:var(--gray-500);max-width:480px;">Dicas de conformidade LGPD, novidades da plataforma e alertas regulat&#243;rios &#8212; direto no seu feed.</p>
+      <div class="social-cards">
+        <a href="https://www.instagram.com/destecse" target="_blank" rel="noopener" class="social-card">
+          <div class="social-card-icon instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="white" stroke="none"/></svg>
+          </div>
+          <div>
+            <div class="social-card-label">Instagram</div>
+            <div class="social-card-name">@destecse</div>
+            <div class="social-card-sub">Dicas, novidades e alertas LGPD</div>
+          </div>
+        </a>
+        <a href="https://www.gov.br/anpd/pt-br/assuntos/noticias" target="_blank" rel="noopener" class="social-card">
+          <div class="social-card-icon anpd">
+            <span style="font-size:22px;">&#127963;&#65039;</span>
+          </div>
+          <div>
+            <div class="social-card-label">Not&#237;cias Oficiais</div>
+            <div class="social-card-name">ANPD</div>
+            <div class="social-card-sub">Fiscaliza&#231;&#245;es e resolu&#231;&#245;es em tempo real</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
 <section class="cta-section section-sm" id="contato">
   <div class="cta-bg"></div>
   <div class="container">
@@ -432,6 +633,7 @@
   </div>
 </section>
 
+<!-- ── FOOTER ── -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -442,14 +644,19 @@
         </div>
         <p class="footer-brand-desc">Plataforma de gest&#227;o de conformidade LGPD para cl&#237;nicas e consult&#243;rios. Prote&#231;&#227;o de dados com respaldo jur&#237;dico e tecnologia.</p>
         <div class="footer-contact">
-          <div class="footer-contact-item">&#128222; &nbsp; Telefone: (83) 98233-2419</div>
+          <div class="footer-contact-item">&#128222; &nbsp; (83) 98233-2419</div>
           <div class="footer-contact-item">&#128231; &nbsp; comercial@destecse.com.br</div>
         </div>
+        <a href="https://www.instagram.com/destecse" target="_blank" rel="noopener" class="footer-instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @destecse no Instagram
+        </a>
       </div>
       <div>
         <div class="footer-col-title">Plataforma</div>
         <ul class="footer-links">
           <li><a href="#funcionalidades">Funcionalidades</a></li>
+          <li><a href="#radar">Radar ANPD</a></li>
           <li><a href="#ganhos">Ganhos</a></li>
           <li><a href="#juridico">Respaldo Jur&#237;dico</a></li>
           <li><a href="#como-funciona">Como Funciona</a></li>
@@ -461,7 +668,7 @@
           <li><a href="#">Pol&#237;tica de Privacidade</a></li>
           <li><a href="#">Termos de Uso</a></li>
           <li><a href="#">DPA &#8212; Acordo de Tratamento</a></li>
-          <li><a href="#">Lei 13.709/2018</a></li>
+          <li><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank">Lei 13.709/2018</a></li>
         </ul>
       </div>
       <div>
@@ -469,6 +676,8 @@
         <ul class="footer-links">
           <li><a href="mailto:comercial@destecse.com.br">Comercial</a></li>
           <li><a href="mailto:suporte@destecse.com.br">Suporte</a></li>
+          <li><a href="https://www.instagram.com/destecse" target="_blank">Instagram</a></li>
+          <li><a href="https://www.gov.br/anpd" target="_blank">ANPD Oficial</a></li>
         </ul>
       </div>
     </div>
